@@ -116,6 +116,17 @@
 	:rtype: self
 
 
+滚动到元素可见
+===============
+
+.. note::
+	目前仅支持使用css进行定位操作，本质为 :ref:`执行js命令<js>` 的快捷方法
+
+.. py:function:: driver.scroll_view(css_selector);
+	
+	:param css_selector: css选择器语法，进行css定位
+
+
 创建har
 ========
 
@@ -204,11 +215,10 @@
 	:param attr: 需要移除的元素属性
 
 
+.. _js:
 
 执行js命令
 ===========
-
-.. _js:
 
 .. note::
 	某些场景下需要借助js语句来对页面元素进行修改等操作，可以使用此方法实现
