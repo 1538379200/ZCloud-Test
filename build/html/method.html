@@ -53,9 +53,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#network">获取network响应</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iframe">切入iframe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">切入最后一个句柄</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">获取元素属性</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
 </ul>
 
         </div>
@@ -287,6 +289,27 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>hint</strong> – 选填，数字类型，选择当前的第几个句柄</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id10">
+<h2>获取元素属性<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>定位元素并获取其属性值</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.get_attr(name,</span> <span class="pre">val,</span> <span class="pre">attr);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – 元素定位方式</p></li>
+<li><p><strong>val</strong> – 元素定位值</p></li>
+<li><p><strong>attr</strong> – 需要获取的属性名称</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

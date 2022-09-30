@@ -132,3 +132,16 @@
 
 	:param hint: 选填，数字类型，选择当前的第几个句柄
 
+
+获取元素属性
+=============
+
+.. note::
+	定位元素并获取其属性值
+
+.. py:function:: driver.get_attr(name, val, attr);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:param attr: 需要获取的属性名称
+

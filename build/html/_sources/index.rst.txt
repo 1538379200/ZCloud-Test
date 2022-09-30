@@ -11,6 +11,7 @@ Welcome to ZCloud-Test documentation!
 
    method
    process
+   cmdline
    
    
 
