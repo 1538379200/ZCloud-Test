@@ -163,6 +163,20 @@
 	:rtype: self
 
 
+切出iframe
+============
+
+
+.. note:: 
+	切出iframe方法，当content为True的时候是返回主文档，默认返回上一级
+
+.. py:function:: driver.switch_iframe_back(content);
+	
+	:param content: 选填，默认False，如果为True则返回主文档，否则返回上一级
+	:rtype: self
+
+
+
 切入最后一个句柄
 ================
 
@@ -173,6 +187,7 @@
 
 	:param hint: 选填，数字类型，选择当前的第几个句柄
 	:rtype: self
+
 
 
 获取元素属性

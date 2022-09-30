@@ -54,22 +54,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#har">创建har</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#network">获取network响应</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iframe">切入iframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">切入最后一个句柄</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">获取元素属性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">设置元素属性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">移除元素属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">切出iframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">切入最后一个句柄</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">获取元素属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">设置元素属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">移除元素属性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#js">执行js命令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">获取元素文本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id17">表单提交</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">鼠标左键点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id19">鼠标右键点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id20">鼠标元素拖放</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id21">鼠标悬浮</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">鼠标双击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id23">判断元素是否被选中</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">判断元素是否显示</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id25">判断元素是否被使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id26">关闭当前标签页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">获取元素文本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">表单提交</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">鼠标左键点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">鼠标右键点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">鼠标元素拖放</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">鼠标悬浮</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">鼠标双击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">判断元素是否被选中</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id25">判断元素是否显示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id26">判断元素是否被使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id27">关闭当前标签页</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
@@ -350,7 +351,27 @@
 
 </section>
 <section id="id11">
-<h2>切入最后一个句柄<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h2>
+<h2>切出iframe<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>切出iframe方法，当content为True的时候是返回主文档，默认返回上一级</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.switch_iframe_back(content);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>content</strong> – 选填，默认False，如果为True则返回主文档，否则返回上一级</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id12">
+<h2>切入最后一个句柄<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>默认切换到最后一个句柄，如果填写了参数，则以参数指定的句柄为准</p>
@@ -369,8 +390,8 @@
 </dd></dl>
 
 </section>
-<section id="id12">
-<h2>获取元素属性<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
+<section id="id13">
+<h2>获取元素属性<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>定位元素并获取其属性值</p>
@@ -393,8 +414,8 @@
 </dd></dl>
 
 </section>
-<section id="id13">
-<h2>设置元素属性<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
+<section id="id14">
+<h2>设置元素属性<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>仅支持css定位，进行对元素的属性进行设置操作，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
@@ -414,8 +435,8 @@
 </dd></dl>
 
 </section>
-<section id="id14">
-<h2>移除元素属性<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h2>
+<section id="id15">
+<h2>移除元素属性<a class="headerlink" href="#id15" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>仅支持css定位，删除某个元素的属性，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
@@ -435,7 +456,7 @@
 
 </section>
 <section id="js">
-<span id="id15"></span><h2>执行js命令<a class="headerlink" href="#js" title="此标题的永久链接"></a></h2>
+<span id="id16"></span><h2>执行js命令<a class="headerlink" href="#js" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>某些场景下需要借助js语句来对页面元素进行修改等操作，可以使用此方法实现</p>
@@ -454,8 +475,8 @@
 </dd></dl>
 
 </section>
-<section id="id16">
-<h2>获取元素文本<a class="headerlink" href="#id16" title="此标题的永久链接"></a></h2>
+<section id="id17">
+<h2>获取元素文本<a class="headerlink" href="#id17" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>获取元素的文本</p>
@@ -477,8 +498,8 @@
 </dd></dl>
 
 </section>
-<section id="id17">
-<h2>表单提交<a class="headerlink" href="#id17" title="此标题的永久链接"></a></h2>
+<section id="id18">
+<h2>表单提交<a class="headerlink" href="#id18" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>对于form表单，有些是可以直接进行快捷提交，而不需要去进行定位按钮操作的</p>
@@ -500,8 +521,8 @@
 </dd></dl>
 
 </section>
-<section id="id18">
-<h2>鼠标左键点击<a class="headerlink" href="#id18" title="此标题的永久链接"></a></h2>
+<section id="id19">
+<h2>鼠标左键点击<a class="headerlink" href="#id19" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -519,8 +540,8 @@
 </dd></dl>
 
 </section>
-<section id="id19">
-<h2>鼠标右键点击<a class="headerlink" href="#id19" title="此标题的永久链接"></a></h2>
+<section id="id20">
+<h2>鼠标右键点击<a class="headerlink" href="#id20" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_context_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -538,8 +559,8 @@
 </dd></dl>
 
 </section>
-<section id="id20">
-<h2>鼠标元素拖放<a class="headerlink" href="#id20" title="此标题的永久链接"></a></h2>
+<section id="id21">
+<h2>鼠标元素拖放<a class="headerlink" href="#id21" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_drag(source,</span> <span class="pre">target);</span></span></dt>
@@ -561,8 +582,8 @@
 <p>source和targe是一个 <strong>有且仅有两个</strong> 元素的列表或者元组，包含元素定位的方式，和元素值，第一个为定位方式，第二个值为元素值</p>
 </div>
 </section>
-<section id="id21">
-<h2>鼠标悬浮<a class="headerlink" href="#id21" title="此标题的永久链接"></a></h2>
+<section id="id22">
+<h2>鼠标悬浮<a class="headerlink" href="#id22" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>鼠标悬浮在元素之上，某些元素需要进行此操作才能展示其他元素属性</p>
@@ -584,8 +605,8 @@
 </dd></dl>
 
 </section>
-<section id="id22">
-<h2>鼠标双击<a class="headerlink" href="#id22" title="此标题的永久链接"></a></h2>
+<section id="id23">
+<h2>鼠标双击<a class="headerlink" href="#id23" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_double_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -603,8 +624,8 @@
 </dd></dl>
 
 </section>
-<section id="id23">
-<h2>判断元素是否被选中<a class="headerlink" href="#id23" title="此标题的永久链接"></a></h2>
+<section id="id24">
+<h2>判断元素是否被选中<a class="headerlink" href="#id24" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_selected(name,</span> <span class="pre">val);</span></span></dt>
@@ -622,8 +643,8 @@
 </dd></dl>
 
 </section>
-<section id="id24">
-<h2>判断元素是否显示<a class="headerlink" href="#id24" title="此标题的永久链接"></a></h2>
+<section id="id25">
+<h2>判断元素是否显示<a class="headerlink" href="#id25" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_displayed(name,</span> <span class="pre">val);</span></span></dt>
@@ -641,8 +662,8 @@
 </dd></dl>
 
 </section>
-<section id="id25">
-<h2>判断元素是否被使用<a class="headerlink" href="#id25" title="此标题的永久链接"></a></h2>
+<section id="id26">
+<h2>判断元素是否被使用<a class="headerlink" href="#id26" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_enabled(name,</span> <span class="pre">val);</span></span></dt>
@@ -660,8 +681,8 @@
 </dd></dl>
 
 </section>
-<section id="id26">
-<h2>关闭当前标签页<a class="headerlink" href="#id26" title="此标题的永久链接"></a></h2>
+<section id="id27">
+<h2>关闭当前标签页<a class="headerlink" href="#id27" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.close_window();</span></span></dt>
