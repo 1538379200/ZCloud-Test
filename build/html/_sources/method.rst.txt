@@ -2,6 +2,26 @@
 当前可用方法介绍
 =================
 
+
+方法链说明
+============
+
+.. note::
+	方法链是返回了其class的实例本身，可以持续调用class实例中的方法，只要是返回是self的方法，都属于支持方法链，可以进行链式操作
+
+方法链使用示例
+
+.. code-block:: python
+	:linenos:
+	:emphasize-lines: 3
+
+	class TestDemo:
+		def test_demo(self, driver):
+			driver.get("https://www.baidu.com").send_keys('id', 'kw', '123')
+
+
+
+
 进入网址
 ========
 
@@ -11,7 +31,7 @@
 .. py:function:: driver.get(url);
 
 	:param url: 需要进入的网址
-	:rtype: None
+	:rtype: self
 
 
 元素输入
@@ -25,6 +45,7 @@
 	:param name: 元素定位方式(xpath、id、name、css等)
 	:param val: 元素值
 	:param txt: 需要输入的数据
+	:rtype: self
 
 
 元素点击
@@ -37,6 +58,7 @@
 
 	:param name: 元素定位的方式
 	:param val: 元素定位值
+	:rtype: self
 
 
 显性等待
@@ -53,6 +75,8 @@
 	:param delay: 选填，默认1，每1秒查看一次
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
 	:param args: 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入
+	:rtype: self
+
 
 
 强制等待
@@ -64,6 +88,7 @@
 .. py:function:: driver.force_wait(timeout);
 
 	:param timeout: 需要等待的时长，整数类型，单位秒
+	:rtype: self
 
 
 报告截图
@@ -76,6 +101,7 @@
 
 	:param name: 选填，元素定位方式
 	:param val: 选填，元素定位值
+	:rtype: self
 
 
 页面滚动
@@ -87,6 +113,7 @@
 .. py:function:: driver.scroll_top(top);
 	
 	:param top: 选填，布尔值，默认False，滚动到底部，为True时滚动到顶部
+	:rtype: self
 
 
 创建har
@@ -96,6 +123,8 @@
 	创建har，用于捕获网页network接口数据，使用此方法，必须启用了proxy代理
 
 .. py:function:: driver.create_har();
+	
+	:rtype: self
 	
 
 获取network响应
@@ -107,7 +136,7 @@
 .. py:function:: driver.get_har(filter_url);
 
 	:param filter_url: 字符串类型，指定需要过滤的网址
-	:rtype: 列表
+	:rtype: 列表list
 
 
 切入iframe
@@ -120,6 +149,7 @@
 
 	:param name: 元素定位方式，当val为空时，name承担val职责
 	:param val: 选填，元素定位值
+	:rtype: self
 
 
 切入最后一个句柄
@@ -131,6 +161,7 @@
 .. py:function:: driver.switch_window_last(hint);
 
 	:param hint: 选填，数字类型，选择当前的第几个句柄
+	:rtype: self
 
 
 获取元素属性
@@ -144,4 +175,165 @@
 	:param name: 元素定位方式
 	:param val: 元素定位值
 	:param attr: 需要获取的属性名称
+	:rtype: self
+
+
+设置元素属性
+=============
+
+.. note::
+	仅支持css定位，进行对元素的属性进行设置操作，为下面 :ref:`执行js命令<js>` 命令的简易封装
+
+
+.. py:function:: driver.set_attr(css_selector, attr_key, attr_val);
+
+	:param css_selector: css选择器语法，使用css定位元素
+	:param attr_key: 元素属性的key值
+	:param attr_val: 需要修改的属性值
+
+
+移除元素属性
+=============
+
+.. note::
+	仅支持css定位，删除某个元素的属性，为下面 :ref:`执行js命令<js>` 命令的简易封装
+
+.. py:function:: driver.remove_attr(css_selector, attr);
+	
+	:param css_selector: css选择器语法，进行元素定位
+	:param attr: 需要移除的元素属性
+
+
+
+执行js命令
+===========
+
+.. _js:
+
+.. note::
+	某些场景下需要借助js语句来对页面元素进行修改等操作，可以使用此方法实现
+
+.. py:function:: driver.execute_script(js_code);
+	
+	:param js_code: 需要执行的js命令块或者语句
+	:rtype: 任意值
+
+
+获取元素文本
+=============
+
+.. note::
+	获取元素的文本
+
+.. py:function:: driver.get_text(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素值
+	:rtype: 字符串str
+
+
+表单提交
+==========
+
+.. note::
+	对于form表单，有些是可以直接进行快捷提交，而不需要去进行定位按钮操作的
+
+.. py:function:: driver.submit(name, val);
+	
+	:param name: 表单的定位方式
+	:param val: 表单的元素值
+	:rtype: self
+
+
+鼠标左键点击
+=============
+
+.. py:function:: driver.mouse_click(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: self
+
+
+鼠标右键点击
+=============
+
+.. py:function:: driver.mouse_context_click(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素值
+	:rtype: self
+
+
+鼠标元素拖放
+=============
+
+.. py:function:: driver.mouse_drag(source, target);
+	
+	:param source: 需要进行拖放的元素，元组或者列表形式
+	:param target: 目标元素，元组或者列表形式
+	:rtype: self
+
+.. warning::
+	source和targe是一个 **有且仅有两个** 元素的列表或者元组，包含元素定位的方式，和元素值，第一个为定位方式，第二个值为元素值
+
+
+鼠标悬浮
+=========
+
+.. note::
+	鼠标悬浮在元素之上，某些元素需要进行此操作才能展示其他元素属性
+
+
+.. py:function:: driver.mouse_hover(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: self
+
+
+鼠标双击
+=========
+
+.. py:function:: driver.mouse_double_click(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: self
+
+
+判断元素是否被选中
+==================
+
+.. py:function:: driver.is_selected(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: bool布尔值
+
+
+判断元素是否显示
+=================
+
+.. py:function:: driver.is_displayed(name, val);
+
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: 布尔值bool
+
+
+判断元素是否被使用
+===================
+
+.. py:function:: driver.is_enabled(name, val);
+
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: 布尔值bool
+
+
+关闭当前标签页
+===============
+
+.. py:function:: driver.close_window();
 
