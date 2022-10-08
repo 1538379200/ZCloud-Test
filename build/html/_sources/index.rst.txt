@@ -10,6 +10,7 @@ Welcome to ZCloud-Test documentation!
    :maxdepth: 2
 
    method
+   severity
    process
    cmdline
    

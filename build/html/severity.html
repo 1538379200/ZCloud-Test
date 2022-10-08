@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>设置用例的优先级 &mdash; ZCloud-Test  文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="如何启用分布式多进程" href="process.html" />
+    <link rel="prev" title="当前可用方法介绍" href="method.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ZCloud-Test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">当前可用方法介绍</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">设置用例的优先级</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">优先级分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">代码中标记优先级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">指定运行特定优先级用例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ZCloud-Test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>设置用例的优先级</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/severity.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>设置用例的优先级<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="id2">
+<h2>优先级分类<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在用例标记时，我们会将用例按照业务功能，进行优先级划分，可以分为 <a class="reference internal" href="#blocker" id="id3"><span>[BLOCKER]</span></a>, <a class="reference internal" href="#critical" id="id4"><span>[CRITICAL]</span></a>, <a class="reference internal" href="#normal" id="id5"><span>[NORMAL]</span></a>, <a class="reference internal" href="#minor" id="id6"><span>[MINOR]</span></a>, <a class="reference internal" href="#trivial" id="id7"><span>[TRIVIAL]</span></a> 在zcloud自动化中，给定优先级，会在报告中进行体现，很容易查看到各种优先级的运行通过情况
+allure使用的默认优先级为normal</p>
+</div>
+<dl class="citation">
+<dt class="label" id="blocker"><span class="brackets"><a class="fn-backref" href="#id3">BLOCKER</a></span></dt>
+<dd><p>严重阻塞，不能进行下一步</p>
+</dd>
+<dt class="label" id="critical"><span class="brackets"><a class="fn-backref" href="#id4">CRITICAL</a></span></dt>
+<dd><p>严重缺陷，功能点缺失等</p>
+</dd>
+<dt class="label" id="normal"><span class="brackets"><a class="fn-backref" href="#id5">NORMAL</a></span></dt>
+<dd><p>一般缺陷</p>
+</dd>
+<dt class="label" id="minor"><span class="brackets"><a class="fn-backref" href="#id6">MINOR</a></span></dt>
+<dd><p>次要缺陷，可能页面与设计不符合等</p>
+</dd>
+<dt class="label" id="trivial"><span class="brackets"><a class="fn-backref" href="#id7">TRIVIAL</a></span></dt>
+<dd><p>轻微缺陷，基本为可优化</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>代码中标记优先级<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在代码中标记优先级，需要导入allure模块，然后进行优先级设置</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@allure</span><span class="o">.</span><span class="n">severity</span><span class="p">(</span><span class="n">allure</span><span class="o">.</span><span class="n">severity_level</span><span class="o">.</span><span class="n">BLOCKER</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test_demo</span><span class="p">():</span>
+<span class="linenos">3</span>        <span class="n">xxx</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="c1"># 也可以使用字符串的形式，不区分大小写</span>
+<span class="linenos">6</span><span class="nd">@allure</span><span class="o">.</span><span class="n">severity</span><span class="p">(</span><span class="s1">&#39;BLOCKER&#39;</span><span class="p">)</span>
+<span class="linenos">7</span><span class="k">def</span> <span class="nf">test_demo</span><span class="p">():</span>
+<span class="linenos">8</span>        <span class="n">xxx</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h2>指定运行特定优先级用例<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 仅运行block和normal优先级的用例</span>
+<span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--allure-severities=blocker, normal&#39;</span><span class="p">])</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># 设置了story、featur等，也可以根据story进行运行划分,详细使用 pytest --help 查看</span>
+<span class="linenos">5</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--allure-stories=story1, story2&#39;</span><span class="p">])</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--allure-features=feature1, feature2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="method.html" class="btn btn-neutral float-left" title="当前可用方法介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="process.html" class="btn btn-neutral float-right" title="如何启用分布式多进程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, 胡佐政.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

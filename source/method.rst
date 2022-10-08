@@ -122,9 +122,9 @@
 .. note::
 	目前仅支持使用css进行定位操作，本质为 :ref:`执行js命令<js>` 的快捷方法
 
-.. py:function:: driver.scroll_view(css_selector);
+.. py:function:: driver.scroll_view(selector);
 	
-	:param css_selector: css选择器语法，进行css定位
+	:param css_selector: 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号
 
 
 创建har
@@ -208,12 +208,12 @@
 =============
 
 .. note::
-	仅支持css定位，进行对元素的属性进行设置操作，为下面 :ref:`执行js命令<js>` 命令的简易封装
+	进行对元素的属性进行设置操作，为下面 :ref:`执行js命令<js>` 命令的简易封装
 
 
-.. py:function:: driver.set_attr(css_selector, attr_key, attr_val);
+.. py:function:: driver.set_attr(selector, attr_key, attr_val);
 
-	:param css_selector: css选择器语法，使用css定位元素
+	:param selector: 元素值，当//开头认定为xpath定位，否则为css定位，selector内部都应仅使用单引号
 	:param attr_key: 元素属性的key值
 	:param attr_val: 需要修改的属性值
 
@@ -222,11 +222,11 @@
 =============
 
 .. note::
-	仅支持css定位，删除某个元素的属性，为下面 :ref:`执行js命令<js>` 命令的简易封装
+	删除某个元素的属性，为下面 :ref:`执行js命令<js>` 命令的简易封装
 
-.. py:function:: driver.remove_attr(css_selector, attr);
+.. py:function:: driver.remove_attr(selector, attr);
 	
-	:param css_selector: css选择器语法，进行元素定位
+	:param selector: 元素定位值，以//开头则认为是xpath定位，否则为css定位，selector内部应仅使用单引号
 	:param attr: 需要移除的元素属性
 
 

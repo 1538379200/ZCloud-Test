@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="如何启用分布式多进程" href="process.html" />
+    <link rel="next" title="设置用例的优先级" href="severity.html" />
     <link rel="prev" title="Welcome to ZCloud-Test documentation!" href="index.html" /> 
 </head>
 
@@ -73,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id27">关闭当前标签页</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
 </ul>
@@ -281,10 +282,10 @@
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.scroll_view(css_selector);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.scroll_view(selector);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>css_selector</strong> – css选择器语法，进行css定位</p>
+<dd class="field-odd"><p><strong>css_selector</strong> – 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号</p>
 </dd>
 </dl>
 </dd></dl>
@@ -418,15 +419,15 @@
 <h2>设置元素属性<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>仅支持css定位，进行对元素的属性进行设置操作，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
+<p>进行对元素的属性进行设置操作，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.set_attr(css_selector,</span> <span class="pre">attr_key,</span> <span class="pre">attr_val);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.set_attr(selector,</span> <span class="pre">attr_key,</span> <span class="pre">attr_val);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>css_selector</strong> – css选择器语法，使用css定位元素</p></li>
+<li><p><strong>selector</strong> – 元素值，当//开头认定为xpath定位，否则为css定位，selector内部都应仅使用单引号</p></li>
 <li><p><strong>attr_key</strong> – 元素属性的key值</p></li>
 <li><p><strong>attr_val</strong> – 需要修改的属性值</p></li>
 </ul>
@@ -439,15 +440,15 @@
 <h2>移除元素属性<a class="headerlink" href="#id15" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>仅支持css定位，删除某个元素的属性，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
+<p>删除某个元素的属性，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.remove_attr(css_selector,</span> <span class="pre">attr);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.remove_attr(selector,</span> <span class="pre">attr);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>css_selector</strong> – css选择器语法，进行元素定位</p></li>
+<li><p><strong>selector</strong> – 元素定位值，以//开头则认为是xpath定位，否则为css定位，selector内部应仅使用单引号</p></li>
 <li><p><strong>attr</strong> – 需要移除的元素属性</p></li>
 </ul>
 </dd>
@@ -696,7 +697,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ZCloud-Test documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="process.html" class="btn btn-neutral float-right" title="如何启用分布式多进程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="severity.html" class="btn btn-neutral float-right" title="设置用例的优先级" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
