@@ -124,7 +124,7 @@
 
 .. py:function:: driver.scroll_view(selector);
 	
-	:param css_selector: 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号
+	:param selector: 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号
 
 
 创建har
