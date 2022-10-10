@@ -34,6 +34,32 @@
 	:rtype: self
 
 
+定位元素
+==========
+
+.. note::
+	这是后面所有元素方法的基础，也可以单独拿出来使用，返回一个element
+
+.. py:function:: driver.location(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: element
+
+
+定位多个元素
+==============
+
+.. note::
+	使用此方法可以定位多个相同属性的元素，以列表的形式进行返回
+
+.. py:function:: driver.locations(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:rtype: element list
+
+
 元素输入
 =========
 
@@ -67,7 +93,7 @@
 .. note::
 	进行显性等待操作，等待直到元素可见可操作
 
-.. py:function:: driver.wait_for(name, val, timeout, delay, call_back, *args);
+.. py:function:: driver.wait_for(name, val, timeout, delay, call_back, *args， **kwargs);
 
 	:param name: 必填，元素定位方式
 	:param val: 必填，元素定位值
@@ -75,6 +101,7 @@
 	:param delay: 选填，默认1，每1秒查看一次
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
 	:param args: 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入
+	:param args: 选填，键值对传入额外需要参数
 	:rtype: self
 
 
@@ -97,10 +124,11 @@
 .. note::
 	对浏览器进行元素截图或者全屏截图并存入报告，如果name或者val未填写，则默认进行全屏截图，否则为元素截图
 
-.. py:function:: driver.report_shot(name, val);
+.. py:function:: driver.report_shot(name, val, picname);
 
 	:param name: 选填，元素定位方式
 	:param val: 选填，元素定位值
+	:param picname: 选填，图片的名称
 	:rtype: self
 
 
@@ -355,6 +383,29 @@
 	:param name: 元素定位方式
 	:param val: 元素定位值
 	:rtype: 布尔值bool
+
+
+断言包含元素
+===============
+
+.. note::
+	断言包含的只是比较简单的断言，仅包含了在……之中，等于的结果，可以自行通过assert进行其他形式断言，但是必须在顶部加上 **with allure.step(xxx):** ，去构建一个断言步骤
+
+
+.. py:function:: driver.assert_in(source, target);
+	
+	:param source: 需要进行断言的数据
+	:param target: 目标数据
+
+
+断言是否相等
+==============
+
+.. py:function:: driver.assert_equal(source, target);
+	
+	:param source: 需要进行断言的数据
+	:param target: 目标数据
+
 
 
 关闭当前标签页
