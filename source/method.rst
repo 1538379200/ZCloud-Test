@@ -407,6 +407,24 @@
 	:param target: 目标数据
 
 
+刷新当前页面
+==============
+
+.. py:function:: driver.refresh();
+
+
+清空输入框
+============
+
+.. note::
+	清空输入框只能针对input标签使用
+
+.. py:function:: driver.clear_input(name, val);
+	
+	:param name: 元素定位方式
+	:param val: 元素定位值
+
+
 
 关闭当前标签页
 ===============

@@ -74,7 +74,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#id28">判断元素是否被使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id29">断言包含元素</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id30">断言是否相等</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id31">关闭当前标签页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">刷新当前页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id32">清空输入框</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id33">关闭当前标签页</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
@@ -771,7 +773,35 @@
 
 </section>
 <section id="id31">
-<h2>关闭当前标签页<a class="headerlink" href="#id31" title="此标题的永久链接"></a></h2>
+<h2>刷新当前页面<a class="headerlink" href="#id31" title="此标题的永久链接"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.refresh();</span></span></dt>
+<dd></dd></dl>
+
+</section>
+<section id="id32">
+<h2>清空输入框<a class="headerlink" href="#id32" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>清空输入框只能针对input标签使用</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.clear_input(name,</span> <span class="pre">val);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – 元素定位方式</p></li>
+<li><p><strong>val</strong> – 元素定位值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id33">
+<h2>关闭当前标签页<a class="headerlink" href="#id33" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.close_window();</span></span></dt>
