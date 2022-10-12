@@ -91,17 +91,18 @@
 =========
 
 .. note::
-	进行显性等待操作，等待直到元素可见可操作
+	进行显性等待操作，等待直到元素可见可操作，使用 **wait_type** 可以选择不同的形式， **view** 代表等待元素可见， **click** 代表等待元素可点击, **no view** 等待元素消失
 
-.. py:function:: driver.wait_for(name, val, timeout, delay, call_back, *args， **kwargs);
+.. py:function:: driver.wait_for(name, val, timeout, delay, wait_type, call_back, *args， **kwargs);
 
 	:param name: 必填，元素定位方式
 	:param val: 必填，元素定位值
-	:param timeout: 选填，默认10，最大等待时间
-	:param delay: 选填，默认1，每1秒查看一次
+	:param timeout: 选填，默认5，最大等待时间
+	:param delay: 选填，默认0.5，每0.5秒查看一次
+	:param wait_type: 选填，等待的情况，默认'view'，可见
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
 	:param args: 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入
-	:param args: 选填，键值对传入额外需要参数
+	:param kwargs: 选填，键值对传入额外需要参数
 	:rtype: self
 
 

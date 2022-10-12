@@ -13,6 +13,7 @@ Welcome to ZCloud-Test documentation!
    severity
    process
    cmdline
+   debug
    
    
 

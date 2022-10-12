@@ -240,21 +240,22 @@
 <h2>显性等待<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>进行显性等待操作，等待直到元素可见可操作</p>
+<p>进行显性等待操作，等待直到元素可见可操作，使用 <strong>wait_type</strong> 可以选择不同的形式， <strong>view</strong> 代表等待元素可见， <strong>click</strong> 代表等待元素可点击, <strong>no view</strong> 等待元素消失</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.wait_for(name,</span> <span class="pre">val,</span> <span class="pre">timeout,</span> <span class="pre">delay,</span> <span class="pre">call_back,</span> <span class="pre">*args，</span> <span class="pre">**kwargs);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.wait_for(name,</span> <span class="pre">val,</span> <span class="pre">timeout,</span> <span class="pre">delay,</span> <span class="pre">wait_type,</span> <span class="pre">call_back,</span> <span class="pre">*args，</span> <span class="pre">**kwargs);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – 必填，元素定位方式</p></li>
 <li><p><strong>val</strong> – 必填，元素定位值</p></li>
-<li><p><strong>timeout</strong> – 选填，默认10，最大等待时间</p></li>
-<li><p><strong>delay</strong> – 选填，默认1，每1秒查看一次</p></li>
+<li><p><strong>timeout</strong> – 选填，默认5，最大等待时间</p></li>
+<li><p><strong>delay</strong> – 选填，默认0.5，每0.5秒查看一次</p></li>
+<li><p><strong>wait_type</strong> – 选填，等待的情况，默认’view’，可见</p></li>
 <li><p><strong>call_back</strong> – 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作</p></li>
 <li><p><strong>args</strong> – 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入</p></li>
-<li><p><strong>args</strong> – 选填，键值对传入额外需要参数</p></li>
+<li><p><strong>kwargs</strong> – 选填，键值对传入额外需要参数</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
