@@ -64,13 +64,14 @@
 =========
 
 .. note::
-	进行元素输入
+	进行元素输入，默认会覆盖原来的输入框数据，
 
-.. py:function:: driver.send_keys(name, val, txt);
+.. py:function:: driver.send_keys(name, val, txt, no_clear);
 
 	:param name: 元素定位方式(xpath、id、name、css等)
 	:param val: 元素值
 	:param txt: 需要输入的数据
+	:param no_clear: 布尔值，默认False，是否不删除原数据，为False为删除
 	:rtype: self
 
 
@@ -97,7 +98,7 @@
 
 	:param name: 必填，元素定位方式
 	:param val: 必填，元素定位值
-	:param timeout: 选填，默认5，最大等待时间
+	:param timeout: 选填，默认10，最大等待时间
 	:param delay: 选填，默认0.5，每0.5秒查看一次
 	:param wait_type: 选填，等待的情况，默认'view'，可见
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
@@ -105,6 +106,20 @@
 	:param kwargs: 选填，键值对传入额外需要参数
 	:rtype: self
 
+
+自定义显性等待
+================
+
+.. note::
+	当上述的显性等待不能满足需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间
+
+.. py:function:: driver.wait_custom(func, timeout, delay, reverse);
+
+	:param func: 自定义充当条件的函数或者方法
+	:param timeout: 最大等待时间，默认10
+	:param delay: 做少秒查看一次，默认0.5
+	:param reverse: 默认False，当为True时，当不满足条件时成立
+	:rtype: self
 
 
 强制等待
@@ -425,6 +440,73 @@
 	:param name: 元素定位方式
 	:param val: 元素定位值
 
+
+替换输入框数据
+=================
+
+.. note::
+	当上一个清空不能使用时，可以使用此方法直接替换输入
+
+.. py:function:: driver.replace_input(name, val, txt);
+
+	:param name: 元素定位方式
+	:param val: 元素定位值
+	:param txt: 需要输入的数据
+
+
+
+
+获取当前网站cookie
+=====================
+
+.. note:: 
+	返回当前浏览器存放的所有cookie数据，列表形式返回
+
+.. py:function:: driver.get_cookie();
+	
+	:rtype: list
+
+
+获取当前页面标题
+==================
+
+.. note:: 
+	标题是我们标签页上面显示的文字，可以用来查看是否进入其他页面
+
+
+.. py:function:: driver.get_title();
+	
+	:rtype: str
+
+
+获取当前页面url
+================
+
+.. note::
+	需要提取当前页面的url做验证的时候，可以使用此方法
+
+.. py:function:: driver.get_url();
+
+	:rtype: 当前页面url
+
+
+使用selenium原始driver
+=========================
+
+.. note::
+	当上述方法不能满足要求时，需要临时自建方法，可以使用此方法，将返回框架所使用的driver实例，仅可读
+
+.. py:function:: driver.origin_driver();
+	
+	:rtype: Webdriver.Chrome
+
+
+.. code-block:: python
+	:linenos:
+
+	# 使用此方式使用原生driver的方法
+	def test_xx_xx(self, driver):
+		driver.origin_driver.find_element(xxx)
 
 
 关闭当前标签页
