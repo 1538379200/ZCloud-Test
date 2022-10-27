@@ -64,14 +64,14 @@
 =========
 
 .. note::
-	进行元素输入，默认会覆盖原来的输入框数据，
+	进行元素输入，设置clear为True则会替换输入框原始数据，同replace_input方法，注意的是，这里替换是模拟键盘的Ctrl+A全选，而且加入替换后，将不能输入多个数据（后续优化）
 
-.. py:function:: driver.send_keys(name, val, txt, no_clear);
+.. py:function:: driver.send_keys(name, val, txt, clear);
 
 	:param name: 元素定位方式(xpath、id、name、css等)
 	:param val: 元素值
 	:param txt: 需要输入的数据
-	:param no_clear: 布尔值，默认False，是否不删除原数据，为False为删除
+	:param clear: 布尔值，默认False，为True则替换原始数据
 	:rtype: self
 
 
@@ -166,9 +166,10 @@
 .. note::
 	目前仅支持使用css进行定位操作，本质为 :ref:`执行js命令<js>` 的快捷方法
 
-.. py:function:: driver.scroll_view(selector);
+.. py:function:: driver.scroll_view(selector, back);
 	
 	:param selector: 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号
+	:param back: 可选，整数类型，回滚多少像素，默认为-100，向上滚动100像素
 
 
 创建har
@@ -507,6 +508,18 @@
 	# 使用此方式使用原生driver的方法
 	def test_xx_xx(self, driver):
 		driver.origin_driver.find_element(xxx)
+
+
+OCR图像识别
+=============
+
+.. note:: 
+	使用此方法需要安装ddddocr模块以及其依赖，会返回识别出来的文字
+
+.. py:function:: driver.ocr(img);
+
+	:param img: 需要进行识别的图片路径
+	:rtype: str，图像中的文字内容
 
 
 关闭当前标签页

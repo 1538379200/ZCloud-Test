@@ -82,6 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id35">获取当前页面标题</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#url">获取当前页面url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#seleniumdriver">使用selenium原始driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ocr">OCR图像识别</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id36">关闭当前标签页</a></li>
 </ul>
 </li>
@@ -200,18 +201,18 @@
 <h2>元素输入<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>进行元素输入，默认会覆盖原来的输入框数据，</p>
+<p>进行元素输入，设置clear为True则会替换输入框原始数据，同replace_input方法，注意的是，这里替换是模拟键盘的Ctrl+A全选，而且加入替换后，将不能输入多个数据（后续优化）</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.send_keys(name,</span> <span class="pre">val,</span> <span class="pre">txt,</span> <span class="pre">no_clear);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.send_keys(name,</span> <span class="pre">val,</span> <span class="pre">txt,</span> <span class="pre">clear);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – 元素定位方式(xpath、id、name、css等)</p></li>
 <li><p><strong>val</strong> – 元素值</p></li>
 <li><p><strong>txt</strong> – 需要输入的数据</p></li>
-<li><p><strong>no_clear</strong> – 布尔值，默认False，是否不删除原数据，为False为删除</p></li>
+<li><p><strong>clear</strong> – 布尔值，默认False，为True则替换原始数据</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
@@ -370,10 +371,13 @@
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.scroll_view(selector);</span></span></dt>
+<span class="sig-name descname"><span class="pre">driver.scroll_view(selector,</span> <span class="pre">back);</span></span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>selector</strong> – 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selector</strong> – 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号</p></li>
+<li><p><strong>back</strong> – 可选，整数类型，回滚多少像素，默认为-100，向上滚动100像素</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -927,6 +931,26 @@
 <span class="linenos">3</span>        <span class="n">driver</span><span class="o">.</span><span class="n">origin_driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="ocr">
+<h2>OCR图像识别<a class="headerlink" href="#ocr" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>使用此方法需要安装ddddocr模块以及其依赖，会返回识别出来的文字</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.ocr(img);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>img</strong> – 需要进行识别的图片路径</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>str，图像中的文字内容</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="id36">
 <h2>关闭当前标签页<a class="headerlink" href="#id36" title="此标题的永久链接"></a></h2>
