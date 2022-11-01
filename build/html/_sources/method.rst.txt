@@ -375,6 +375,9 @@
 判断元素是否被选中
 ==================
 
+.. warning:: 
+	此方法不会抛出错误，即使找不到元素，也只会返回False，便于将其作为后续判断的条件，而不是直接异常退出
+
 .. py:function:: driver.is_selected(name, val);
 	
 	:param name: 元素定位方式
@@ -385,6 +388,9 @@
 判断元素是否显示
 =================
 
+.. warning::
+	此方法不会抛出异常，查找不到或者定位出错都只会返回False
+
 .. py:function:: driver.is_displayed(name, val);
 
 	:param name: 元素定位方式
@@ -394,6 +400,10 @@
 
 判断元素是否被使用
 ===================
+
+.. warning::
+	此方法不会抛出异常，查找不到元素或者定位出现错误都只会返回False
+
 
 .. py:function:: driver.is_enabled(name, val);
 

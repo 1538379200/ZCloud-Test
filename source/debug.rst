@@ -56,3 +56,51 @@
 	# 根据设置的优先级进行划定
 	pytest.main(['--allure-severities=blocker'])
 
+
+测试失败终止代码
+==================
+
+.. note:: 
+	在pytest运行中，用例失败不会停止代码，如果我们在调试代码的时候，则可以让其运行失败的时候，直接停止，方便我们直接进行调试操作
+
+.. code-block:: python
+	:linenos: 
+
+	# 加上-x，则代码运行到失败会终止运行
+	pytest.main(['-x'])
+
+
+运行上次失败的用例
+====================
+
+.. note::
+	pytest在运行后，会保存各个用例的状态，保存在我们项目目录的 **.pytest_cache** 目录，我们可以使用命令行参数，使pytest仅运行上次失败的用例
+
+.. code-block:: python
+	:linenos:
+
+	# 运行失败的用例
+	pytest.main(['--lf'])	# pytest.main(['--last-failed'])
+
+	# 先运行失败的用例再运行其他用例
+	pytest.main(['--ff'])	# pytest.main(['--failed-first'])
+
+	# 我们可以手动清除上次的运行缓存，但是一般不需要去手动清理
+	pytest.main(['--cache-clear'])
+
+
+步进调试
+============
+
+.. note:: 
+	调试失败用例，我们还可以使用步进的方式，和-x参数一样，遇到失败会停止运行，下次再以此模式运行，将从这个失败的用例继续运行
+
+.. code-block:: python
+	:linenos:
+
+	pytest.main(['--sw'])
+
+	# 我们还可以使用 --stepwise-skip 的方式跳过第一个失败的用例，即从上次失败的下一个用例开始
+	pytest.main(['--sw', '--stepwise-skip'])
+
+

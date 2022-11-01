@@ -719,6 +719,10 @@
 </section>
 <section id="id27">
 <h2>判断元素是否被选中<a class="headerlink" href="#id27" title="此标题的永久链接"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此方法不会抛出错误，即使找不到元素，也只会返回False，便于将其作为后续判断的条件，而不是直接异常退出</p>
+</div>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_selected(name,</span> <span class="pre">val);</span></span></dt>
@@ -738,6 +742,10 @@
 </section>
 <section id="id28">
 <h2>判断元素是否显示<a class="headerlink" href="#id28" title="此标题的永久链接"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此方法不会抛出异常，查找不到或者定位出错都只会返回False</p>
+</div>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_displayed(name,</span> <span class="pre">val);</span></span></dt>
@@ -757,6 +765,10 @@
 </section>
 <section id="id29">
 <h2>判断元素是否被使用<a class="headerlink" href="#id29" title="此标题的永久链接"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此方法不会抛出异常，查找不到元素或者定位出现错误都只会返回False</p>
+</div>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.is_enabled(name,</span> <span class="pre">val);</span></span></dt>

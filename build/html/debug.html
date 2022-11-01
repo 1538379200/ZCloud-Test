@@ -48,6 +48,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">运行时选择用例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pytest">使用pytest跳过用例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#allure">使用allure来确定运行的用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">测试失败终止代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">运行上次失败的用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">步进调试</a></li>
 </ul>
 </li>
 </ul>
@@ -121,6 +124,47 @@
 <span class="linenos"> 9</span>
 <span class="linenos">10</span><span class="c1"># 根据设置的优先级进行划定</span>
 <span class="linenos">11</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--allure-severities=blocker&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>测试失败终止代码<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在pytest运行中，用例失败不会停止代码，如果我们在调试代码的时候，则可以让其运行失败的时候，直接停止，方便我们直接进行调试操作</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 加上-x，则代码运行到失败会终止运行</span>
+<span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;-x&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>运行上次失败的用例<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>pytest在运行后，会保存各个用例的状态，保存在我们项目目录的 <strong>.pytest_cache</strong> 目录，我们可以使用命令行参数，使pytest仅运行上次失败的用例</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 运行失败的用例</span>
+<span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--lf&#39;</span><span class="p">])</span>   <span class="c1"># pytest.main([&#39;--last-failed&#39;])</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># 先运行失败的用例再运行其他用例</span>
+<span class="linenos">5</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--ff&#39;</span><span class="p">])</span>   <span class="c1"># pytest.main([&#39;--failed-first&#39;])</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1"># 我们可以手动清除上次的运行缓存，但是一般不需要去手动清理</span>
+<span class="linenos">8</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--cache-clear&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>步进调试<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>调试失败用例，我们还可以使用步进的方式，和-x参数一样，遇到失败会停止运行，下次再以此模式运行，将从这个失败的用例继续运行</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--sw&#39;</span><span class="p">])</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="c1"># 我们还可以使用 --stepwise-skip 的方式跳过第一个失败的用例，即从上次失败的下一个用例开始</span>
+<span class="linenos">4</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--sw&#39;</span><span class="p">,</span> <span class="s1">&#39;--stepwise-skip&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
