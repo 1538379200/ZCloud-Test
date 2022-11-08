@@ -83,13 +83,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#url">获取当前页面url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#seleniumdriver">使用selenium原始driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ocr">OCR图像识别</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id36">关闭当前标签页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id36">预期断言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id37">关闭当前标签页</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
 </ul>
 
         </div>
@@ -268,7 +270,7 @@
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>self</p>
+<dd class="field-even"><p>webdriver对象</p>
 </dd>
 </dl>
 </dd></dl>
@@ -278,7 +280,7 @@
 <h2>自定义显性等待<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>当上述的显性等待不能满足需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间</p>
+<p>当上述的显性等待不能满足selenium操作需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -965,7 +967,72 @@
 
 </section>
 <section id="id36">
-<h2>关闭当前标签页<a class="headerlink" href="#id36" title="此标题的永久链接"></a></h2>
+<h2>预期断言<a class="headerlink" href="#id36" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>预期断言需要结合循环进行，此方法省去了各种if的逻辑思考，只需要按照原来的逻辑进行断言即可，可以帮助去除逻辑分析上的思考，将精力用在更繁杂的业务功能之上。并非一定需要使用这种方式，有时候可能自己写的循环判断更简单或者更符合业务需求</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>预期断言会忽略你代码中的所有错误，直到断言成功或者超出循环次数，超出循环次数则会抛出异常，所以你不需要在你的代码中加入异常处理</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.wait_assert(rounds,</span> <span class="pre">current_round,</span> <span class="pre">driver=None);</span></span></dt>
+<dd><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param rounds</dt>
+<dd class="field-odd"><p>循环总次数，与外部循环总次数对应</p>
+</dd>
+<dt class="field-even">param current_round</dt>
+<dd class="field-even"><p>当前循环次数</p>
+</dd>
+<dt class="field-odd">param driver</dt>
+<dd class="field-odd"><p>选填，使用的driver对象，此框架中为Base实例，传入则默认获取一次成功或者失败图片保存到报告中</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>下面演示了其基本使用方式：</strong></p>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">test_xxx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">driver</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="k">with</span> <span class="n">driver</span><span class="o">.</span><span class="n">wait_assert</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">driver</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos">4</span>            <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos">5</span>                <span class="k">break</span>
+<span class="linenos">6</span>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">7</span>            <span class="n">xxxxxxxx</span>
+<span class="linenos">8</span>            <span class="n">xxxxxxxx</span>
+<span class="linenos">9</span>            <span class="k">assert</span> <span class="n">xx</span> <span class="o">==</span> <span class="n">xx</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此方法必须是一个能抛出错误的方法，错误交由with给定的内部程序去处理只需要关注业务逻辑，如果循环次数用完未通过，则会抛出错误，如果使用if的形式，想使用此方法，也需要将非理想数据raise出来
+你需要自己加上每次循环的间隔，如上面每次进行真正业务逻辑前，都会等待2秒
+在很多时候，你可能会需要加上统计计时：</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">test_xxx</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">use_time</span> <span class="o">=</span> <span class="n">你设置的初始时间</span>
+<span class="linenos"> 3</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos"> 4</span>        <span class="k">with</span> <span class="n">driver</span><span class="o">.</span><span class="n">wait_assert</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">driver</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos"> 5</span>            <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos"> 6</span>                <span class="k">break</span>
+<span class="linenos"> 7</span>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 8</span>            <span class="n">xxxxxxxxxxxx</span>
+<span class="linenos"> 9</span>            <span class="n">xxxxxxxxxxxx</span>
+<span class="linenos">10</span>            <span class="k">assert</span> <span class="n">xx</span> <span class="o">==</span> <span class="n">xx</span>
+<span class="linenos">11</span>        <span class="n">use_time</span> <span class="o">+=</span> <span class="mi">2</span>
+<span class="linenos">12</span>    <span class="n">allure</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span>
+<span class="linenos">13</span>        <span class="sa">f</span><span class="s1">&#39;第</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">次获取请求成功断言，原定拦截时间</span><span class="si">{</span><span class="n">data1</span><span class="si">}</span><span class="s1">秒，总等待耗时</span><span class="si">{</span><span class="n">user_time</span><span class="si">}</span><span class="s1">秒&#39;</span><span class="p">,</span>
+<span class="linenos">14</span>        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;循环断言成功&#39;</span><span class="p">,</span>
+<span class="linenos">15</span>        <span class="n">attachment_type</span><span class="o">=</span><span class="n">allure</span><span class="o">.</span><span class="n">attachment_type</span><span class="o">.</span><span class="n">TEXT</span>
+<span class="linenos">16</span>    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h2>关闭当前标签页<a class="headerlink" href="#id37" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.close_window();</span></span></dt>

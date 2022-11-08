@@ -14,6 +14,7 @@ Welcome to ZCloud-Test documentation!
    process
    cmdline
    debug
+   sql
    
    
 

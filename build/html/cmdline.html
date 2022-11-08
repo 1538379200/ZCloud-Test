@@ -21,6 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="如何自定义运行、调试" href="debug.html" />
     <link rel="prev" title="如何启用分布式多进程" href="process.html" /> 
 </head>
 
@@ -41,6 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="method.html">当前可用方法介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">命令行自定义参数介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">开启代理模式</a></li>
@@ -48,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id4">切换测试环境</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
 </ul>
 
         </div>
@@ -106,16 +109,20 @@
 </section>
 <section id="id4">
 <h2>切换测试环境<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
-<div class="admonition warning">
-<p class="admonition-title">警告</p>
-<p>目前此功能暂未开发完成，等待后续数据补足后在进行维护</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>进行测试环境切换，切换环境需要保证新的配置数据结构与 <strong>preconditions.ini</strong> 的结构相同，只是数据值进行不同的变更，不填写此参数，默认为读取 <strong>preconditions.ini</strong> 文件</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 必须写上值，目前未确定值</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 必须写上值，如果值不是 test 则会认为是正式环境，启用其他文件</span>
 <span class="hll"><span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--env=xxx&#39;</span><span class="p">])</span>
 </span></pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">--</span><span class="n">env</span><span class="o">=</span><span class="n">xxx</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>每个环境应该拥有一份自己的配置文件，他们可能在数据层面有所不同，但都具有相同的结构， <strong>preconditions.ini</strong> 为测试环境配置数据，目前暂定 <strong>preconditions_pro.ini</strong> 为正式环境配置文件名，具体读取哪份文件，可以在项目根目录的 <strong>conftest.py</strong> 文件中，找到钩子函数 <strong>pytest_configure</strong> 修改其文件路径</p>
 </div>
 </section>
 </section>
@@ -125,6 +132,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="process.html" class="btn btn-neutral float-left" title="如何启用分布式多进程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="debug.html" class="btn btn-neutral float-right" title="如何自定义运行、调试" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

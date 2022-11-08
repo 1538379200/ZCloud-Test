@@ -104,14 +104,14 @@
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
 	:param args: 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入
 	:param kwargs: 选填，键值对传入额外需要参数
-	:rtype: self
+	:rtype: webdriver对象
 
 
 自定义显性等待
 ================
 
 .. note::
-	当上述的显性等待不能满足需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间
+	当上述的显性等待不能满足selenium操作需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间
 
 .. py:function:: driver.wait_custom(func, timeout, delay, reverse);
 
@@ -530,6 +530,67 @@ OCR图像识别
 
 	:param img: 需要进行识别的图片路径
 	:rtype: str，图像中的文字内容
+
+
+预期断言
+======================
+
+.. note:: 
+	预期断言需要结合循环进行，此方法省去了各种if的逻辑思考，只需要按照原来的逻辑进行断言即可，可以帮助去除逻辑分析上的思考，将精力用在更繁杂的业务功能之上。并非一定需要使用这种方式，有时候可能自己写的循环判断更简单或者更符合业务需求
+
+
+.. warning::
+	预期断言会忽略你代码中的所有错误，直到断言成功或者超出循环次数，超出循环次数则会抛出异常，所以你不需要在你的代码中加入异常处理
+
+
+.. py:function:: driver.wait_assert(rounds, current_round, driver=None);
+	
+	:param rounds: 循环总次数，与外部循环总次数对应
+	:param current_round: 当前循环次数
+	:param driver: 选填，使用的driver对象，此框架中为Base实例，传入则默认获取一次成功或者失败图片保存到报告中
+
+
+ **下面演示了其基本使用方式：**
+
+
+.. code-block:: python
+	:linenos:
+
+	def test_xxx(self, driver):
+	    for i in range(10):
+	        with driver.wait_assert(10, i, driver) as e:
+	            if e:
+	                break
+	            time.sleep(2)
+	            xxxxxxxx
+	            xxxxxxxx
+	            assert xx == xx
+
+
+.. warning::
+	此方法必须是一个能抛出错误的方法，错误交由with给定的内部程序去处理只需要关注业务逻辑，如果循环次数用完未通过，则会抛出错误，如果使用if的形式，想使用此方法，也需要将非理想数据raise出来
+	你需要自己加上每次循环的间隔，如上面每次进行真正业务逻辑前，都会等待2秒
+	在很多时候，你可能会需要加上统计计时：
+
+.. code-block:: python
+	:linenos:
+
+	def test_xxx(10):
+	    use_time = 你设置的初始时间
+	    for i in range(10):
+	        with driver.wait_assert(10, i, driver) as e:
+	            if e:
+	                break
+	            time.sleep(2)
+	            xxxxxxxxxxxx
+	            xxxxxxxxxxxx
+	            assert xx == xx
+	        use_time += 2
+	    allure.attach(
+	        f'第{r}次获取请求成功断言，原定拦截时间{data1}秒，总等待耗时{user_time}秒',
+	        name='循环断言成功',
+	        attachment_type=allure.attachment_type.TEXT
+	    )
 
 
 关闭当前标签页

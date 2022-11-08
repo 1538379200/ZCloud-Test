@@ -39,14 +39,18 @@
 切换测试环境
 ==============
 
-.. warning::
-	目前此功能暂未开发完成，等待后续数据补足后在进行维护
+.. note:: 
+	进行测试环境切换，切换环境需要保证新的配置数据结构与 **preconditions.ini** 的结构相同，只是数据值进行不同的变更，不填写此参数，默认为读取 **preconditions.ini** 文件
+
 
 .. code-block:: python
 	:linenos:
 	:emphasize-lines: 2
 
-	# 必须写上值，目前未确定值
+	# 必须写上值，如果值不是 test 则会认为是正式环境，启用其他文件
 	pytest.main(['--env=xxx'])
 
 >>> pytest --env=xxx
+
+.. warning::
+	每个环境应该拥有一份自己的配置文件，他们可能在数据层面有所不同，但都具有相同的结构， **preconditions.ini** 为测试环境配置数据，目前暂定 **preconditions_pro.ini** 为正式环境配置文件名，具体读取哪份文件，可以在项目根目录的 **conftest.py** 文件中，找到钩子函数 **pytest_configure** 修改其文件路径
