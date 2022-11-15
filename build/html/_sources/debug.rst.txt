@@ -38,7 +38,7 @@
 ============================
 
 .. note:: 
-	当我们给用例添加了story、feature等标志后，我们可以根据这个来确定用例的运行，具体可以使用哪些方法，可以通过pytest --help来查看，查看关于allure的命令行参数，windows查看仅关于allure的参数可以 **pytest --help | findstr allure** 
+	当我们给用例添加了story、feature等标志后，我们可以根据这个来确定用例的运行，具体可以使用哪些方法，可以通过pytest --help或者pytest -h来查看，查看关于allure的命令行参数，windows查看仅关于allure的参数可以 **pytest --help | findstr allure** 
 
 
 .. code-block:: python

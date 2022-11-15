@@ -54,3 +54,16 @@
 
 .. warning::
 	每个环境应该拥有一份自己的配置文件，他们可能在数据层面有所不同，但都具有相同的结构， **preconditions.ini** 为测试环境配置数据，目前暂定 **preconditions_pro.ini** 为正式环境配置文件名，具体读取哪份文件，可以在项目根目录的 **conftest.py** 文件中，找到钩子函数 **pytest_configure** 修改其文件路径
+
+
+使用selenium无头模式运行
+===========================
+
+.. note:: 
+	默认不使用无头模式运行，只有值为True才启动无头模式
+
+.. code-block:: python
+	:linenos:
+
+	# 仅在值等于True的时候，开启无头模式
+	pytest.main(['--headless=True'])

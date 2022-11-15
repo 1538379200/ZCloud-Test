@@ -104,7 +104,7 @@
 	:param call_back: 选填，默认None，可以选择Base实例中的方法，如send_keys、click、report_shot等元素操作
 	:param args: 选填，当选择的call_back是send_keys时，或者回调的方法有其他参数时，在arg中传入
 	:param kwargs: 选填，键值对传入额外需要参数
-	:rtype: webdriver对象
+	:rtype: WebElement页面对象
 
 
 自定义显性等待
@@ -119,7 +119,7 @@
 	:param timeout: 最大等待时间，默认10
 	:param delay: 做少秒查看一次，默认0.5
 	:param reverse: 默认False，当为True时，当不满足条件时成立
-	:rtype: self
+	:rtype: WebElement/bool
 
 
 强制等待
@@ -164,11 +164,11 @@
 ===============
 
 .. note::
-	目前仅支持使用css进行定位操作，本质为 :ref:`执行js命令<js>` 的快捷方法
+	js进行定位操作，本质为 :ref:`执行js命令<js>` 的快捷方法
 
 .. py:function:: driver.scroll_view(selector, back);
 	
-	:param selector: 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号
+	:param selector: 定位元素值，以//开头则为xpath定位，否则为css定位
 	:param back: 可选，整数类型，回滚多少像素，默认为-100，向上滚动100像素
 
 
@@ -258,7 +258,7 @@
 
 .. py:function:: driver.set_attr(selector, attr_key, attr_val);
 
-	:param selector: 元素值，当//开头认定为xpath定位，否则为css定位，selector内部都应仅使用单引号
+	:param selector: 元素值，当//开头认定为xpath定位，否则为css定位
 	:param attr_key: 元素属性的key值
 	:param attr_val: 需要修改的属性值
 
@@ -271,7 +271,7 @@
 
 .. py:function:: driver.remove_attr(selector, attr);
 	
-	:param selector: 元素定位值，以//开头则认为是xpath定位，否则为css定位，selector内部应仅使用单引号
+	:param selector: 元素定位值，以//开头则认为是xpath定位，否则为css定位
 	:param attr: 需要移除的元素属性
 
 

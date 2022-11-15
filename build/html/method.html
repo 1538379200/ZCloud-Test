@@ -270,7 +270,7 @@
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>webdriver对象</p>
+<dd class="field-even"><p>WebElement页面对象</p>
 </dd>
 </dl>
 </dd></dl>
@@ -295,7 +295,7 @@
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>self</p>
+<dd class="field-even"><p>WebElement/bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -369,7 +369,7 @@
 <h2>滚动到元素可见<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>目前仅支持使用css进行定位操作，本质为 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 的快捷方法</p>
+<p>js进行定位操作，本质为 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 的快捷方法</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -377,7 +377,7 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selector</strong> – 定位元素值，以//开头则为xpath定位，否则为css定位，selector内部应仅使用单引号</p></li>
+<li><p><strong>selector</strong> – 定位元素值，以//开头则为xpath定位，否则为css定位</p></li>
 <li><p><strong>back</strong> – 可选，整数类型，回滚多少像素，默认为-100，向上滚动100像素</p></li>
 </ul>
 </dd>
@@ -521,7 +521,7 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selector</strong> – 元素值，当//开头认定为xpath定位，否则为css定位，selector内部都应仅使用单引号</p></li>
+<li><p><strong>selector</strong> – 元素值，当//开头认定为xpath定位，否则为css定位</p></li>
 <li><p><strong>attr_key</strong> – 元素属性的key值</p></li>
 <li><p><strong>attr_val</strong> – 需要修改的属性值</p></li>
 </ul>
@@ -542,7 +542,7 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selector</strong> – 元素定位值，以//开头则认为是xpath定位，否则为css定位，selector内部应仅使用单引号</p></li>
+<li><p><strong>selector</strong> – 元素定位值，以//开头则认为是xpath定位，否则为css定位</p></li>
 <li><p><strong>attr</strong> – 需要移除的元素属性</p></li>
 </ul>
 </dd>

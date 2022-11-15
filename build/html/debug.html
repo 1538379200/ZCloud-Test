@@ -21,6 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="进行postgresql的读取" href="sql.html" />
     <link rel="prev" title="命令行自定义参数介绍" href="cmdline.html" /> 
 </head>
 
@@ -53,6 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id5">步进调试</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
 </ul>
 
         </div>
@@ -111,7 +113,7 @@
 <h2>使用allure来确定运行的用例<a class="headerlink" href="#allure" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>当我们给用例添加了story、feature等标志后，我们可以根据这个来确定用例的运行，具体可以使用哪些方法，可以通过pytest –help来查看，查看关于allure的命令行参数，windows查看仅关于allure的参数可以 <strong>pytest –help | findstr allure</strong></p>
+<p>当我们给用例添加了story、feature等标志后，我们可以根据这个来确定用例的运行，具体可以使用哪些方法，可以通过pytest –help或者pytest -h来查看，查看关于allure的命令行参数，windows查看仅关于allure的参数可以 <strong>pytest –help | findstr allure</strong></p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@allure</span><span class="o">.</span><span class="n">story</span><span class="p">(</span><span class="s2">&quot;测试&quot;</span><span class="p">)</span>
 <span class="linenos"> 2</span><span class="nd">@allure</span><span class="o">.</span><span class="n">severity</span><span class="p">(</span><span class="s1">&#39;blocker&#39;</span><span class="p">)</span>
@@ -175,6 +177,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cmdline.html" class="btn btn-neutral float-left" title="命令行自定义参数介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="sql.html" class="btn btn-neutral float-right" title="进行postgresql的读取" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

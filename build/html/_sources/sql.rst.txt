@@ -16,6 +16,17 @@
 	s = GetSql('表', '用例名称')		# 后面我们统一用s代替GetSql的实例
 
 
+我们还可以使用with的形式去进行，程序会自动进行数据库的关闭操作
+
+.. code-block:: python
+	:linenos:
+
+	from config.pgsql import GetSql
+
+	with GetSql('表', '用例名称') as s:
+		print(s.all)
+
+
 获取所有数据
 =============
 
@@ -80,4 +91,15 @@
 
 .. py:function:: s.close();
 
+
+
+便捷添加数据
+==============
+
+添加数据我们可以运行框架根目录的 **insert_cases.py** 文件，cd到根目录运行命令：
+``streamlit run insert_cases.py``
+
+使用此方式需要安装必要的依赖： streamlit, pandas, psycopg2
+
+.. image:: images/index.png
 

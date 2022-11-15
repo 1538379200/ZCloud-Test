@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id5">获取单个步骤</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">以字典方式返回步骤值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">关闭数据库连接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">便捷添加数据</a></li>
 </ul>
 </li>
 </ul>
@@ -89,6 +90,13 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">config.pgsql</span> <span class="kn">import</span> <span class="n">GetSql</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">s</span> <span class="o">=</span> <span class="n">GetSql</span><span class="p">(</span><span class="s1">&#39;表&#39;</span><span class="p">,</span> <span class="s1">&#39;用例名称&#39;</span><span class="p">)</span>         <span class="c1"># 后面我们统一用s代替GetSql的实例</span>
+</pre></div>
+</div>
+<p>我们还可以使用with的形式去进行，程序会自动进行数据库的关闭操作</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">config.pgsql</span> <span class="kn">import</span> <span class="n">GetSql</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">with</span> <span class="n">GetSql</span><span class="p">(</span><span class="s1">&#39;表&#39;</span><span class="p">,</span> <span class="s1">&#39;用例名称&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos">4</span>        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">all</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -187,6 +195,13 @@
 <span class="sig-name descname"><span class="pre">s.close();</span></span></dt>
 <dd></dd></dl>
 
+</section>
+<section id="id8">
+<h2>便捷添加数据<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
+<p>添加数据我们可以运行框架根目录的 <strong>insert_cases.py</strong> 文件，cd到根目录运行命令：
+<code class="docutils literal notranslate"><span class="pre">streamlit</span> <span class="pre">run</span> <span class="pre">insert_cases.py</span></code></p>
+<p>使用此方式需要安装必要的依赖： streamlit, pandas, psycopg2</p>
+<img alt="_images/index.png" src="_images/index.png" />
 </section>
 </section>
 
