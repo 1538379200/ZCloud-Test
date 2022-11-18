@@ -172,6 +172,18 @@
 	:param back: 可选，整数类型，回滚多少像素，默认为-100，向上滚动100像素
 
 
+滚动到元素可见2
+================
+
+.. note:: 
+	当前是属于selenium的滚动，封装后，加入了步骤、日志记录和等待时间
+
+.. py:function:: driver.scroll_view_element(element, back);
+	
+	:param element: selenium的WebElement，页面的元素
+	:param back: 回滚的像素值，默认-100，即为向上滚动100像素
+	:rtype: dict，返回当前元素在页面中的坐标点
+
 创建har
 ========
 

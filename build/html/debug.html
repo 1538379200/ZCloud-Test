@@ -47,11 +47,12 @@
 <li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">如何自定义运行、调试</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">运行时选择用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">使用标记选择运行的用例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pytest">使用pytest跳过用例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#allure">使用allure来确定运行的用例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">测试失败终止代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">运行上次失败的用例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">步进调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">测试失败终止代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">运行上次失败的用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">步进调试</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
@@ -97,6 +98,26 @@
 <p>上面代码，指定了运行用例 <strong>test_000_xxx</strong> ，前面testcases是文件夹，test_001_xxx.py是用例保存文件，Test002XXX是用例类名，前面定位到文件，使用的是 ”/“ 后面指定类和方法，使用的是 ”::“ ，我们可以指定多个，也可以单独只指定类名或者文件，目录按这行代码的相对路径找（一般为main.py文件）</p>
 </div>
 </section>
+<section id="id3">
+<h2>使用标记选择运行的用例<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>我们在规范中说明，会在类之上加上mark标记当前类所属的模块，有control、waf、monitor三种自定义mark标记，在运行时，我们可以使用此mark标记来运行标记的模块，在命令行中运行注意需要添加 <strong>双引号</strong></p>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;control&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;control and waf&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;waf or monitor&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 此处为在文件中运行的表示形式</span>
+<span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;-m control and waf&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
 <section id="pytest">
 <h2>使用pytest跳过用例<a class="headerlink" href="#pytest" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
@@ -129,8 +150,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h2>测试失败终止代码<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<section id="id4">
+<h2>测试失败终止代码<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>在pytest运行中，用例失败不会停止代码，如果我们在调试代码的时候，则可以让其运行失败的时候，直接停止，方便我们直接进行调试操作</p>
@@ -140,8 +161,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h2>运行上次失败的用例<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<section id="id5">
+<h2>运行上次失败的用例<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>pytest在运行后，会保存各个用例的状态，保存在我们项目目录的 <strong>.pytest_cache</strong> 目录，我们可以使用命令行参数，使pytest仅运行上次失败的用例</p>
@@ -157,8 +178,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h2>步进调试<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<section id="id6">
+<h2>步进调试<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>调试失败用例，我们还可以使用步进的方式，和-x参数一样，遇到失败会停止运行，下次再以此模式运行，将从这个失败的用例继续运行</p>

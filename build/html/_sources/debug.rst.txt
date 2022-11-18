@@ -19,6 +19,24 @@
 	上面代码，指定了运行用例 **test_000_xxx** ，前面testcases是文件夹，test_001_xxx.py是用例保存文件，Test002XXX是用例类名，前面定位到文件，使用的是 ”/“ 后面指定类和方法，使用的是 ”::“ ，我们可以指定多个，也可以单独只指定类名或者文件，目录按这行代码的相对路径找（一般为main.py文件）
 
 
+使用标记选择运行的用例
+======================
+
+.. note:: 
+	我们在规范中说明，会在类之上加上mark标记当前类所属的模块，有control、waf、monitor三种自定义mark标记，在运行时，我们可以使用此mark标记来运行标记的模块，在命令行中运行注意需要添加 **双引号** 
+
+>>> pytest -m "control"
+
+>>> pytest -m "control and waf"
+
+>>> pytest -m "waf or monitor"
+
+.. code-block:: python
+	:linenos:
+
+	# 此处为在文件中运行的表示形式
+	pytest.main(['-m control and waf'])
+
 
 使用pytest跳过用例
 ====================
