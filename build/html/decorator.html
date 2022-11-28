@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>框架中众多装饰器的作用 &mdash; ZCloud-Test  文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="进行postgresql的读取" href="sql.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ZCloud-Test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">当前可用方法介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">如何启用分布式多进程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">框架中众多装饰器的作用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">自定义标记模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#allure">allure的报告标记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">确立用例之间依赖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">用例参数化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">跳过用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">确认用例执行顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">预期失败</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class">跳过整个class</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ZCloud-Test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>框架中众多装饰器的作用</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/decorator.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>框架中众多装饰器的作用<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="id2">
+<h2>自定义标记模块<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>我们有三个自定义的mark标记，control、waf、monitor，用于标记不同的模块，通过模块间的解耦，让运行更加灵活</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">control</span>
+<span class="linenos"> 2</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos"> 3</span>        <span class="o">...</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">waf</span>
+<span class="linenos"> 6</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos"> 7</span>        <span class="o">...</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">monitor</span>
+<span class="linenos">10</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos">11</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="allure">
+<h2>allure的报告标记<a class="headerlink" href="#allure" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>allure的标记是属于pytest-allure的插件装饰器，用于给allure提供数据的</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@allure</span><span class="o">.</span><span class="n">epic</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span>             <span class="c1"># 标记测试的系统</span>
+<span class="linenos">2</span><span class="nd">@allure</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span>  <span class="c1"># 标记测试的模块</span>
+<span class="linenos">3</span><span class="nd">@allure</span><span class="o">.</span><span class="n">story</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span>    <span class="c1"># 标记用例功能，故事级</span>
+<span class="linenos">4</span><span class="nd">@allure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span>    <span class="c1"># 标记用例名称</span>
+<span class="linenos">5</span><span class="nd">@allure</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span>             <span class="c1"># 标记用例步骤</span>
+<span class="linenos">6</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos">7</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>确立用例之间依赖<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>我们的用例之间，很多时候是存在依赖关系的，比如，只有A用例成功过后，我们才会想要运行B用例，B依赖于A的结果，这个时候，我们可以使用dependency插件装饰器来确立依赖关系</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">dependency</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;case&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test_001_xxx</span><span class="p">():</span>
+<span class="linenos">3</span>        <span class="o">...</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">dependency</span><span class="p">(</span><span class="n">depends</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;case&#39;</span><span class="p">])</span>
+<span class="linenos">6</span><span class="k">def</span> <span class="nf">test_002_xxx</span><span class="p">():</span>
+<span class="linenos">7</span>        <span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>我们上面案例，当test_001_xxx运行失败的时候，test_002_xxx将会自动跳过，dependency默认的范围是module，按照当前文件，这个可以自行去搜索相关使用方法，建议每个被依赖的方法、函数，都应该使用唯一的name标识</p>
+</div>
+</section>
+<section id="id4">
+<h2>用例参数化<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>用例参数化，可以让我们使用当前的方法，仅修改参数，来达到产生不同用例的目的，下面会产生两个用例，形参xxx将会被两个实参yyy和zzz取代</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;yyy&#39;</span><span class="p">,</span> <span class="s1">&#39;zzz&#39;</span><span class="p">])</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">xxx</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>跳过用例<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos">3</span>        <span class="o">...</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skipif</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="linenos">6</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos">7</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>确认用例执行顺序<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>确认用例顺序会作用于全局，建议不使用这种方式，而是采取名称的方式来确定运行顺序</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="linenos">3</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>预期失败<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在某些场景下，我们的用例，在预想情况下就应该是失败的，这时候可以使用xfail的预期失败，当用例失败，标记为 <strong>xfail</strong> 表示是预期内的失败，如果通过了，则标记为 <strong>xPass</strong> 表示为预期外的通过，xfail并不算做失败用例</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">&#64;pytest.mark.xfail(condition=None,</span> <span class="pre">reason=None,</span> <span class="pre">raises=None,</span> <span class="pre">run=True,</span> <span class="pre">strict=False);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> – 条件，满足某些条件执行预期结果，condition返回True为执行</p></li>
+<li><p><strong>reason</strong> – 原因，可以进行一些描述</p></li>
+<li><p><strong>raises</strong> – 指定一些错误情况，错误之外的错误，则会标记用例为fail，而不是xfail</p></li>
+<li><p><strong>run</strong> – 如果为False，则不运行用例，直接标记为xfail</p></li>
+<li><p><strong>strict</strong> – 当为False时，失败标记为xfail，成功标记为xpass；如果为True，用例通过则直接标记为fail</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="class">
+<h2>跳过整个class<a class="headerlink" href="#class" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>这是我们自己定义的mark标记，源码在项目根目录的conftest.py文件中，使用此标记，可以根据用例运行状态，跳过整个class的运行，具体实现逻辑，当用例被标记上过后，如果此用例运行失败，则会计算重试最大次数，达到最大重试次数后仍是失败，则会记录此class或者此module，其他属于被记录的class或者module的用例将会被跳过运行</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">&#64;pytest.mark.skipclass(module);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>module</strong> – 布尔值，此参数必须使用关键词的形式，当为True时，跳过整个文件的用例，False或者默认跳过当前class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skipclass</span>  <span class="c1"># 当用例运行状态不是passed时，跳过此class后面即将运行的所有用例</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test_001</span><span class="p">():</span>
+<span class="linenos">3</span>        <span class="o">...</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skipclass</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># 如果用例状态不是passed时，跳过整个文件运行</span>
+<span class="linenos">6</span><span class="k">def</span> <span class="nf">test_003</span><span class="p">():</span>
+<span class="linenos">7</span>        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sql.html" class="btn btn-neutral float-left" title="进行postgresql的读取" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, 胡佐政.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
