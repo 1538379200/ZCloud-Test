@@ -42,50 +42,100 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">当前可用方法介绍</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">方法链说明</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">进入网址</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">定位元素</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">定位多个元素</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">元素输入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">元素点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">显性等待</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">自定义显性等待</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">强制等待</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">报告截图</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">页面滚动</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">滚动到元素可见</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">滚动到元素可见2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#har">创建har</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#network">获取network响应</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#iframe">切入iframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">切出iframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">切入最后一个句柄</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id17">获取元素属性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">设置元素属性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id19">移除元素属性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#js">执行js命令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id21">获取元素文本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">表单提交</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id23">鼠标左键点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">鼠标右键点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id25">鼠标元素拖放</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id26">鼠标悬浮</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id27">鼠标双击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id28">判断元素是否被选中</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id29">判断元素是否显示</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id30">判断元素是否被使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id31">断言包含元素</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id32">断言是否相等</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id33">刷新当前页面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id34">清空输入框</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id35">替换输入框数据</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cookie">获取当前网站cookie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id36">获取当前页面标题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#url">获取当前页面url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">使用须知</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">使用直接定位的元素</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">方法链说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">基础方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">进入网址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">定位元素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">定位多个元素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">元素输入</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">元素点击</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">获取元素文本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">表单提交</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">等待方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">显性等待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">自定义显性等待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">多重元素等待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-alert">智能弹窗等待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">获取当前弹窗类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">强制等待</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">截图方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">报告截图</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">页面滚动方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">页面滚动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">滚动到元素可见</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">滚动到元素可见2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network">NetWork处理方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#har">创建har</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">获取network响应</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#iframe">iframe切换方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">切入iframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">切出iframe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id29">窗口切换方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id30">切入最后一个句柄</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">元素属性操作方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id32">获取元素属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">设置元素属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">移除元素属性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#js">执行JS方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id35">执行js命令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id37">鼠标操作方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id38">鼠标左键点击</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">鼠标右键点击</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">鼠标元素拖放</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">鼠标悬浮</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">鼠标双击</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id43">元素状态判断方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id44">判断元素是否被选中</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">判断元素是否显示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">判断元素是否被使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id47">断言方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id48">断言包含元素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">断言是否相等</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">断言弹窗内容</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id51">刷新当前页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-keys">输入框额外方法(send_keys已集成这些方法)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id52">清空输入框</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">替换输入框数据</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id54">获取页面数据方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cookie">获取当前网站cookie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">获取当前页面标题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#url">获取当前页面url</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#seleniumdriver">使用selenium原始driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ocr">OCR图像识别</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id37">预期断言</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id38">关闭当前标签页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id56">预期断言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id57">关闭当前标签页</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
@@ -93,6 +143,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorator.html">框架中众多装饰器的作用</a></li>
 </ul>
 
         </div>
@@ -122,7 +173,28 @@
   <section id="id1">
 <h1>当前可用方法介绍<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
 <section id="id2">
-<h2>方法链说明<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>使用须知<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<section id="id3">
+<h3>使用直接定位的元素<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在我们的框架方法中，只要是需要传入定位元素，比如，传入name、val，你都可以将val设置为空字符串，来告诉程序，你需要处理的是一个已经被定位的WebElement，而不需要拿这数据继续去定位，后续的方法说明中，将不再对此特性进行赘述</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 传入的是一个定位列表时</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">test_001</span><span class="p">(</span><span class="n">driver</span><span class="p">):</span>
+<span class="hll"><span class="linenos">3</span>        <span class="n">el</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;xpath&#39;</span><span class="p">,</span> <span class="s2">&quot;//div&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">4</span>        <span class="n">driver</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="o">*</span><span class="n">el</span><span class="p">)</span>
+</span><span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># 传入的是一个element时</span>
+<span class="linenos">7</span><span class="k">def</span> <span class="nf">test_002</span><span class="p">(</span><span class="n">driver</span><span class="p">):</span>
+<span class="hll"><span class="linenos">8</span>        <span class="n">el</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">location</span><span class="p">(</span><span class="s1">&#39;xpath&#39;</span><span class="p">,</span> <span class="s2">&quot;//div&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">9</span>        <span class="n">driver</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>方法链说明<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>方法链是返回了其class的实例本身，可以持续调用class实例中的方法，只要是返回是self的方法，都属于支持方法链，可以进行链式操作</p>
@@ -134,8 +206,10 @@
 </span></pre></div>
 </div>
 </section>
-<section id="id3">
-<h2>进入网址<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<section id="id5">
+<h2>基础方法<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<section id="id6">
+<h3>进入网址<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进入网址</p>
@@ -154,8 +228,8 @@
 </dd></dl>
 
 </section>
-<section id="id4">
-<h2>定位元素<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<section id="id7">
+<h3>定位元素<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>这是后面所有元素方法的基础，也可以单独拿出来使用，返回一个element</p>
@@ -177,8 +251,8 @@
 </dd></dl>
 
 </section>
-<section id="id5">
-<h2>定位多个元素<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<section id="id8">
+<h3>定位多个元素<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>使用此方法可以定位多个相同属性的元素，以列表的形式进行返回</p>
@@ -200,8 +274,8 @@
 </dd></dl>
 
 </section>
-<section id="id6">
-<h2>元素输入<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
+<section id="id9">
+<h3>元素输入<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进行元素输入，设置clear为True则会替换输入框原始数据，同replace_input方法，注意的是，这里替换是模拟键盘的Ctrl+A全选，而且加入替换后，将不能输入多个数据（后续优化）</p>
@@ -225,8 +299,8 @@
 </dd></dl>
 
 </section>
-<section id="id7">
-<h2>元素点击<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
+<section id="id10">
+<h3>元素点击<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进行元素点击操作</p>
@@ -248,8 +322,57 @@
 </dd></dl>
 
 </section>
-<section id="id8">
-<h2>显性等待<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
+<section id="id11">
+<h3>获取元素文本<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>获取元素的文本</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.get_text(name,</span> <span class="pre">val);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – 元素定位方式</p></li>
+<li><p><strong>val</strong> – 元素值</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>字符串str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id12">
+<h3>表单提交<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>对于form表单，有些是可以直接进行快捷提交，而不需要去进行定位按钮操作的</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.submit(name,</span> <span class="pre">val);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – 表单的定位方式</p></li>
+<li><p><strong>val</strong> – 表单的元素值</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id13">
+<h2>等待方法<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
+<section id="id14">
+<h3>显性等待<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进行显性等待操作，等待直到元素可见可操作，使用 <strong>wait_type</strong> 可以选择不同的形式， <strong>view</strong> 代表等待元素可见， <strong>click</strong> 代表等待元素可点击, <strong>no view</strong> 等待元素消失</p>
@@ -277,8 +400,8 @@
 </dd></dl>
 
 </section>
-<section id="id9">
-<h2>自定义显性等待<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
+<section id="id15">
+<h3>自定义显性等待<a class="headerlink" href="#id15" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>当上述的显性等待不能满足selenium操作需要时，可以使用自定义显性等待，自己通过函数或者方法确定等待条件，每次会隔delay时间调用一次func函数，当返回True时判断正确，最大等待timeout时间</p>
@@ -302,8 +425,82 @@
 </dd></dl>
 
 </section>
-<section id="id10">
-<h2>强制等待<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h2>
+<section id="id16">
+<h3>多重元素等待<a class="headerlink" href="#id16" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>很多情况，我们在显性等待的时候，会一直等待某一个元素，而出现错误的时候，我们并不能第一时间捕获错误情况，而且超出预期的结果已经出现，继续等待会浪费大量的时间在一个用例上，所以，我们给框架定义了一个多元素的等待机制，仅存在一个预期为真的条件，其他条件为真则失败</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.wait_many(element_list,</span> <span class="pre">true_index=0,</span> <span class="pre">timeout=10,</span> <span class="pre">delay=0.5);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element_list</strong> – 需要进行判断的元素列表，可以是已经经过定位的WebElement集合，也可以是形如(‘xpath’, ‘//div’)的集合，例：[WebElement, (‘xpath’, ‘//div’), (‘id’, ‘su’)]</p></li>
+<li><p><strong>true_index</strong> – 指明预期的下标，默认0，当element_list列表的第true_index项显示时，等待通过，否则抛出AssertionError</p></li>
+<li><p><strong>timeout</strong> – 超时时间，实际为轮数，默认10，等待超过10轮没有结果则抛出TimeOutError</p></li>
+<li><p><strong>delay</strong> – 延迟多久查看一次，默认0.5，即每轮的等待时间</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="wait-alert">
+<span id="id17"></span><h3>智能弹窗等待<a class="headerlink" href="#wait-alert" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<div class="line-block">
+<div class="line">此功能不需要去关注我们的弹窗具体内容，而只需要关注弹窗的状态，此方法仅可在此系统使用，<strong>建议关于弹窗判断都使用此方式，速度更快，编写更简洁</strong></div>
+<div class="line"><strong>绿色为成功弹窗</strong></div>
+<div class="line"><strong>红色为失败弹窗</strong></div>
+<div class="line"><strong>黄色为警告弹窗</strong></div>
+</div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.wait_alert(alert_type='success',</span> <span class="pre">timeout=10,</span> <span class="pre">delay=0.5);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alert_type</strong> – 弹窗类型，可以是success、warning、error，也可以写s、w、e，代表成功、警告、失败弹窗，当显示的是此类型弹窗时通过</p></li>
+<li><p><strong>timeout</strong> – 等待最大时间，默认10</p></li>
+<li><p><strong>delay</strong> – 查看延迟，默认0.5秒</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id18">
+<h3>获取当前弹窗类型<a class="headerlink" href="#id18" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此方法是为智能弹窗等待构造的方法，你也可以进行使用，会返回一个窗口类型字符串和一个可定位的元素</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver._get_alert_type(timeout,</span> <span class="pre">delay);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> – 等待时间</p></li>
+<li><p><strong>delay</strong> – 多久查看一次</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>tuple，形如(‘success’, (‘xpath’, “//div”))</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id19">
+<h3>强制等待<a class="headerlink" href="#id19" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进行强制等待操作，单位为秒，程序将阻塞填入的时间长度</p>
@@ -322,8 +519,11 @@
 </dd></dl>
 
 </section>
-<section id="id11">
-<h2>报告截图<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id20">
+<h2>截图方法<a class="headerlink" href="#id20" title="此标题的永久链接"></a></h2>
+<section id="id21">
+<h3>报告截图<a class="headerlink" href="#id21" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>对浏览器进行元素截图或者全屏截图并存入报告，如果name或者val未填写，则默认进行全屏截图，否则为元素截图</p>
@@ -346,8 +546,11 @@
 </dd></dl>
 
 </section>
-<section id="id12">
-<h2>页面滚动<a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id22">
+<h2>页面滚动方法<a class="headerlink" href="#id22" title="此标题的永久链接"></a></h2>
+<section id="id23">
+<h3>页面滚动<a class="headerlink" href="#id23" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>进行页面滚动，此方法仅封装了滚动到底部和顶部的操作</p>
@@ -366,11 +569,11 @@
 </dd></dl>
 
 </section>
-<section id="id13">
-<h2>滚动到元素可见<a class="headerlink" href="#id13" title="此标题的永久链接"></a></h2>
+<section id="id24">
+<h3>滚动到元素可见<a class="headerlink" href="#id24" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>js进行定位操作，本质为 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 的快捷方法</p>
+<p>js进行定位操作，本质为 <a class="reference internal" href="#id35"><span class="std std-ref">执行js命令</span></a> 的快捷方法</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -386,8 +589,8 @@
 </dd></dl>
 
 </section>
-<section id="id14">
-<h2>滚动到元素可见2<a class="headerlink" href="#id14" title="此标题的永久链接"></a></h2>
+<section id="id25">
+<h3>滚动到元素可见2<a class="headerlink" href="#id25" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>当前是属于selenium的滚动，封装后，加入了步骤、日志记录和等待时间</p>
@@ -409,8 +612,11 @@
 </dd></dl>
 
 </section>
+</section>
+<section id="network">
+<h2>NetWork处理方法<a class="headerlink" href="#network" title="此标题的永久链接"></a></h2>
 <section id="har">
-<h2>创建har<a class="headerlink" href="#har" title="此标题的永久链接"></a></h2>
+<h3>创建har<a class="headerlink" href="#har" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>创建har，用于捕获网页network接口数据，使用此方法，必须启用了proxy代理</p>
@@ -426,8 +632,8 @@
 </dd></dl>
 
 </section>
-<section id="network">
-<h2>获取network响应<a class="headerlink" href="#network" title="此标题的永久链接"></a></h2>
+<section id="id26">
+<h3>获取network响应<a class="headerlink" href="#id26" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>获取网页中network的数据，并以列表的形式返回</p>
@@ -446,8 +652,11 @@
 </dd></dl>
 
 </section>
+</section>
 <section id="iframe">
-<h2>切入iframe<a class="headerlink" href="#iframe" title="此标题的永久链接"></a></h2>
+<h2>iframe切换方法<a class="headerlink" href="#iframe" title="此标题的永久链接"></a></h2>
+<section id="id27">
+<h3>切入iframe<a class="headerlink" href="#id27" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>切入到iframe的方法，如果val不填写，默认使用id、name的方式填入iframe，name则变成元素值</p>
@@ -469,8 +678,8 @@
 </dd></dl>
 
 </section>
-<section id="id15">
-<h2>切出iframe<a class="headerlink" href="#id15" title="此标题的永久链接"></a></h2>
+<section id="id28">
+<h3>切出iframe<a class="headerlink" href="#id28" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>切出iframe方法，当content为True的时候是返回主文档，默认返回上一级</p>
@@ -489,8 +698,11 @@
 </dd></dl>
 
 </section>
-<section id="id16">
-<h2>切入最后一个句柄<a class="headerlink" href="#id16" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id29">
+<h2>窗口切换方法<a class="headerlink" href="#id29" title="此标题的永久链接"></a></h2>
+<section id="id30">
+<h3>切入最后一个句柄<a class="headerlink" href="#id30" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>默认切换到最后一个句柄，如果填写了参数，则以参数指定的句柄为准</p>
@@ -509,8 +721,11 @@
 </dd></dl>
 
 </section>
-<section id="id17">
-<h2>获取元素属性<a class="headerlink" href="#id17" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id31">
+<h2>元素属性操作方法<a class="headerlink" href="#id31" title="此标题的永久链接"></a></h2>
+<section id="id32">
+<h3>获取元素属性<a class="headerlink" href="#id32" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>定位元素并获取其属性值</p>
@@ -533,11 +748,11 @@
 </dd></dl>
 
 </section>
-<section id="id18">
-<h2>设置元素属性<a class="headerlink" href="#id18" title="此标题的永久链接"></a></h2>
+<section id="id33">
+<h3>设置元素属性<a class="headerlink" href="#id33" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>进行对元素的属性进行设置操作，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
+<p>进行对元素的属性进行设置操作，为下面 <a class="reference internal" href="#id35"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -554,11 +769,11 @@
 </dd></dl>
 
 </section>
-<section id="id19">
-<h2>移除元素属性<a class="headerlink" href="#id19" title="此标题的永久链接"></a></h2>
+<section id="id34">
+<h3>移除元素属性<a class="headerlink" href="#id34" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>删除某个元素的属性，为下面 <a class="reference internal" href="#js"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
+<p>删除某个元素的属性，为下面 <a class="reference internal" href="#id35"><span class="std std-ref">执行js命令</span></a> 命令的简易封装</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -574,8 +789,11 @@
 </dd></dl>
 
 </section>
+</section>
 <section id="js">
-<span id="id20"></span><h2>执行js命令<a class="headerlink" href="#js" title="此标题的永久链接"></a></h2>
+<h2>执行JS方法<a class="headerlink" href="#js" title="此标题的永久链接"></a></h2>
+<section id="id35">
+<span id="id36"></span><h3>执行js命令<a class="headerlink" href="#id35" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>某些场景下需要借助js语句来对页面元素进行修改等操作，可以使用此方法实现</p>
@@ -594,54 +812,11 @@
 </dd></dl>
 
 </section>
-<section id="id21">
-<h2>获取元素文本<a class="headerlink" href="#id21" title="此标题的永久链接"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p>获取元素的文本</p>
-</div>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.get_text(name,</span> <span class="pre">val);</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">参数</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – 元素定位方式</p></li>
-<li><p><strong>val</strong> – 元素值</p></li>
-</ul>
-</dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>字符串str</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
-<section id="id22">
-<h2>表单提交<a class="headerlink" href="#id22" title="此标题的永久链接"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p>对于form表单，有些是可以直接进行快捷提交，而不需要去进行定位按钮操作的</p>
-</div>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">driver.submit(name,</span> <span class="pre">val);</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">参数</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – 表单的定位方式</p></li>
-<li><p><strong>val</strong> – 表单的元素值</p></li>
-</ul>
-</dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>self</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="id23">
-<h2>鼠标左键点击<a class="headerlink" href="#id23" title="此标题的永久链接"></a></h2>
+<section id="id37">
+<h2>鼠标操作方法<a class="headerlink" href="#id37" title="此标题的永久链接"></a></h2>
+<section id="id38">
+<h3>鼠标左键点击<a class="headerlink" href="#id38" title="此标题的永久链接"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -659,8 +834,8 @@
 </dd></dl>
 
 </section>
-<section id="id24">
-<h2>鼠标右键点击<a class="headerlink" href="#id24" title="此标题的永久链接"></a></h2>
+<section id="id39">
+<h3>鼠标右键点击<a class="headerlink" href="#id39" title="此标题的永久链接"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_context_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -678,8 +853,8 @@
 </dd></dl>
 
 </section>
-<section id="id25">
-<h2>鼠标元素拖放<a class="headerlink" href="#id25" title="此标题的永久链接"></a></h2>
+<section id="id40">
+<h3>鼠标元素拖放<a class="headerlink" href="#id40" title="此标题的永久链接"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_drag(source,</span> <span class="pre">target);</span></span></dt>
@@ -701,8 +876,8 @@
 <p>source和targe是一个 <strong>有且仅有两个</strong> 元素的列表或者元组，包含元素定位的方式，和元素值，第一个为定位方式，第二个值为元素值</p>
 </div>
 </section>
-<section id="id26">
-<h2>鼠标悬浮<a class="headerlink" href="#id26" title="此标题的永久链接"></a></h2>
+<section id="id41">
+<h3>鼠标悬浮<a class="headerlink" href="#id41" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>鼠标悬浮在元素之上，某些元素需要进行此操作才能展示其他元素属性</p>
@@ -724,8 +899,8 @@
 </dd></dl>
 
 </section>
-<section id="id27">
-<h2>鼠标双击<a class="headerlink" href="#id27" title="此标题的永久链接"></a></h2>
+<section id="id42">
+<h3>鼠标双击<a class="headerlink" href="#id42" title="此标题的永久链接"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.mouse_double_click(name,</span> <span class="pre">val);</span></span></dt>
@@ -743,8 +918,11 @@
 </dd></dl>
 
 </section>
-<section id="id28">
-<h2>判断元素是否被选中<a class="headerlink" href="#id28" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id43">
+<h2>元素状态判断方法<a class="headerlink" href="#id43" title="此标题的永久链接"></a></h2>
+<section id="id44">
+<h3>判断元素是否被选中<a class="headerlink" href="#id44" title="此标题的永久链接"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>此方法不会抛出错误，即使找不到元素，也只会返回False，便于将其作为后续判断的条件，而不是直接异常退出</p>
@@ -766,8 +944,8 @@
 </dd></dl>
 
 </section>
-<section id="id29">
-<h2>判断元素是否显示<a class="headerlink" href="#id29" title="此标题的永久链接"></a></h2>
+<section id="id45">
+<h3>判断元素是否显示<a class="headerlink" href="#id45" title="此标题的永久链接"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>此方法不会抛出异常，查找不到或者定位出错都只会返回False</p>
@@ -789,8 +967,8 @@
 </dd></dl>
 
 </section>
-<section id="id30">
-<h2>判断元素是否被使用<a class="headerlink" href="#id30" title="此标题的永久链接"></a></h2>
+<section id="id46">
+<h3>判断元素是否被使用<a class="headerlink" href="#id46" title="此标题的永久链接"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>此方法不会抛出异常，查找不到元素或者定位出现错误都只会返回False</p>
@@ -812,8 +990,11 @@
 </dd></dl>
 
 </section>
-<section id="id31">
-<h2>断言包含元素<a class="headerlink" href="#id31" title="此标题的永久链接"></a></h2>
+</section>
+<section id="id47">
+<h2>断言方法<a class="headerlink" href="#id47" title="此标题的永久链接"></a></h2>
+<section id="id48">
+<h3>断言包含元素<a class="headerlink" href="#id48" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>断言包含的只是比较简单的断言，仅包含了在……之中，等于的结果，可以自行通过assert进行其他形式断言，但是必须在顶部加上 <strong>with allure.step(xxx):</strong> ，去构建一个断言步骤</p>
@@ -832,8 +1013,8 @@
 </dd></dl>
 
 </section>
-<section id="id32">
-<h2>断言是否相等<a class="headerlink" href="#id32" title="此标题的永久链接"></a></h2>
+<section id="id49">
+<h3>断言是否相等<a class="headerlink" href="#id49" title="此标题的永久链接"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.assert_equal(source,</span> <span class="pre">target);</span></span></dt>
@@ -848,16 +1029,43 @@
 </dd></dl>
 
 </section>
-<section id="id33">
-<h2>刷新当前页面<a class="headerlink" href="#id33" title="此标题的永久链接"></a></h2>
+<section id="id50">
+<h3>断言弹窗内容<a class="headerlink" href="#id50" title="此标题的永久链接"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果你只是希望判断是不是某些弹窗类型，可以使用 <a class="reference internal" href="#wait-alert"><span class="std std-ref">wait_alert</span></a> ，如果你不需要知道弹窗的类型，而是需要具体判断弹窗的文字内容，则可以使用此方法进行断言操作</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">driver.assert_alert(msg,</span> <span class="pre">timeout=10,</span> <span class="pre">delay=0.5);</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – 你需要断言的文字，当msg存在于弹窗的文字中时，断言通过返回弹窗文字，否则抛出AssertionError</p></li>
+<li><p><strong>timeout</strong> – 最大等待时间</p></li>
+<li><p><strong>delay</strong> – 延迟查看时间</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>str，弹窗的文字内容</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id51">
+<h2>刷新当前页面<a class="headerlink" href="#id51" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.refresh();</span></span></dt>
 <dd></dd></dl>
 
 </section>
-<section id="id34">
-<h2>清空输入框<a class="headerlink" href="#id34" title="此标题的永久链接"></a></h2>
+<section id="send-keys">
+<h2>输入框额外方法(send_keys已集成这些方法)<a class="headerlink" href="#send-keys" title="此标题的永久链接"></a></h2>
+<section id="id52">
+<h3>清空输入框<a class="headerlink" href="#id52" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>清空输入框只能针对input标签使用</p>
@@ -876,8 +1084,8 @@
 </dd></dl>
 
 </section>
-<section id="id35">
-<h2>替换输入框数据<a class="headerlink" href="#id35" title="此标题的永久链接"></a></h2>
+<section id="id53">
+<h3>替换输入框数据<a class="headerlink" href="#id53" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>当上一个清空不能使用时，可以使用此方法直接替换输入</p>
@@ -897,8 +1105,11 @@
 </dd></dl>
 
 </section>
+</section>
+<section id="id54">
+<h2>获取页面数据方法<a class="headerlink" href="#id54" title="此标题的永久链接"></a></h2>
 <section id="cookie">
-<h2>获取当前网站cookie<a class="headerlink" href="#cookie" title="此标题的永久链接"></a></h2>
+<h3>获取当前网站cookie<a class="headerlink" href="#cookie" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>返回当前浏览器存放的所有cookie数据，列表形式返回</p>
@@ -914,8 +1125,8 @@
 </dd></dl>
 
 </section>
-<section id="id36">
-<h2>获取当前页面标题<a class="headerlink" href="#id36" title="此标题的永久链接"></a></h2>
+<section id="id55">
+<h3>获取当前页面标题<a class="headerlink" href="#id55" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>标题是我们标签页上面显示的文字，可以用来查看是否进入其他页面</p>
@@ -932,7 +1143,7 @@
 
 </section>
 <section id="url">
-<h2>获取当前页面url<a class="headerlink" href="#url" title="此标题的永久链接"></a></h2>
+<h3>获取当前页面url<a class="headerlink" href="#url" title="此标题的永久链接"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>需要提取当前页面的url做验证的时候，可以使用此方法</p>
@@ -947,6 +1158,7 @@
 </dl>
 </dd></dl>
 
+</section>
 </section>
 <section id="seleniumdriver">
 <h2>使用selenium原始driver<a class="headerlink" href="#seleniumdriver" title="此标题的永久链接"></a></h2>
@@ -990,8 +1202,8 @@
 </dd></dl>
 
 </section>
-<section id="id37">
-<h2>预期断言<a class="headerlink" href="#id37" title="此标题的永久链接"></a></h2>
+<section id="id56">
+<h2>预期断言<a class="headerlink" href="#id56" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>预期断言需要结合循环进行，此方法省去了各种if的逻辑思考，只需要按照原来的逻辑进行断言即可，可以帮助去除逻辑分析上的思考，将精力用在更繁杂的业务功能之上。并非一定需要使用这种方式，有时候可能自己写的循环判断更简单或者更符合业务需求</p>
@@ -1055,8 +1267,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id38">
-<h2>关闭当前标签页<a class="headerlink" href="#id38" title="此标题的永久链接"></a></h2>
+<section id="id57">
+<h2>关闭当前标签页<a class="headerlink" href="#id57" title="此标题的永久链接"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">driver.close_window();</span></span></dt>

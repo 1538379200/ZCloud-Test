@@ -128,11 +128,12 @@ allure的报告标记
 ===============
 
 .. note:: 
-	这是我们自己定义的mark标记，源码在项目根目录的conftest.py文件中，使用此标记，可以根据用例运行状态，跳过整个class的运行，具体实现逻辑，当用例被标记上过后，如果此用例运行失败，则会计算重试最大次数，达到最大重试次数后仍是失败，则会记录此class或者此module，其他属于被记录的class或者module的用例将会被跳过运行
+	这是我们自己定义的mark标记，源码在项目根目录的conftest.py文件中，使用此标记，可以根据用例运行状态，跳过整个class的运行，具体实现逻辑，当用例被标记上过后，如果此用例运行失败，则会计算重试最大次数，达到最大重试次数后仍是失败，则会记录此class或者此module，其他属于被记录的class或者module的用例将会被跳过运行，使用no_skip可以选择不跳过的用例
 
-.. py:function:: @pytest.mark.skipclass(module);
+.. py:function:: @pytest.mark.skipclass(module， no_skip);
 	
 	:param module: 布尔值，此参数必须使用关键词的形式，当为True时，跳过整个文件的用例，False或者默认跳过当前class
+	:param no_skip: 列表，标记不需要跳过的用例，在我们的框架中，可以使用用例的编号
 
 .. code-block:: python
 	:linenos:
@@ -143,5 +144,18 @@ allure的报告标记
 
 	@pytest.mark.skipclass(module=True)	# 如果用例状态不是passed时，跳过整个文件运行
 	def test_003():
+		...
+
+	@pytest.mark.skipclass(no_skip=['005', '006']) # 写上no_skip，将不会跳过test_005和test_006用例，test_007依然会跳过
+	def test_004():
+		...
+
+	def test_005():
+		...
+
+	def test_006():
+		...
+
+	def test_007():
 		...
 
