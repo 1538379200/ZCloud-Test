@@ -49,10 +49,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">开启动态日志名称</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">切换测试环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#selenium">使用selenium无头模式运行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">自定义开始用例</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorator.html">框架中众多装饰器的作用</a></li>
 </ul>
 
         </div>
@@ -135,6 +137,16 @@
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 仅在值等于True的时候，开启无头模式</span>
 <span class="linenos">2</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--headless=True&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>自定义开始用例<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此运行参数需要结合mark标记 <strong>&#64;pytest.mark.debug_from</strong> 使用，可以前往 <a class="reference internal" href="debug.html#custom-start"><span class="std std-ref">自定义开始用例</span></a> 中查看示例，参数不区分大小写</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;--debugger=true&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>

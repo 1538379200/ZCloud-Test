@@ -139,6 +139,29 @@
 	:param val: 表单的元素值
 	:rtype: self
 
+点击方法扩展
+===============
+
+点击确定按钮
+--------------------
+
+.. warning::
+	此方法是找寻确定按钮的所有元素，然后循环点击，它不一定是完全稳定的操作，可能会在你使用的时候，点击到其他同样类型的确定按钮，你可以选择性使用，如果你 **确定页面中能见的只有一个确定按钮** ，那这个方法将帮你更快的实现点击操作。使用前，你必须确定，页面中的按钮的文字为“确定”，然后确定按钮的颜色，之后再使用。此方法只针对于云平台系统
+
+.. py:function:: driver.click_confirm(button_type='primary', button_text='确定' first_success=True);
+	
+	:param button_type: 按钮的样式，如果为蓝色的确定按钮，则为primary，如果为红色，则为error，默认primary
+	:param button_text: 按钮的内部文字，在某些场合，如果不是属于“确定”，你可以进行修改，注意，这里的文字使用模糊查找
+	:param first_success: 默认True，是否在点击未报错时直接停止，不继续运行，如果为False，即使点击功能成功，仍会继续点击其他找到的元素，某些元素点击不会出现报错时，可以选择False
+	:rtype: self
+
+确定按钮样式示例：
+
+.. image:: images/confirm.png
+
+
+.. image:: images/error.png
+
 
 等待方法
 =============
@@ -203,11 +226,12 @@
 	| **红色为失败弹窗**
 	| **黄色为警告弹窗**
 
-.. py:function:: driver.wait_alert(alert_type='success', timeout=10, delay=0.5);
+.. py:function:: driver.wait_alert(alert_type='success', timeout=10, delay=0.5, picname=None);
 	
 	:param alert_type: 弹窗类型，可以是success、warning、error，也可以写s、w、e，代表成功、警告、失败弹窗，当显示的是此类型弹窗时通过
 	:param timeout: 等待最大时间，默认10
 	:param delay: 查看延迟，默认0.5秒
+	:param picname: 可自定义的图片名称，后面会加上 '-元素截图-成功' 类型的字样作为标识
 
 
 获取当前弹窗类型

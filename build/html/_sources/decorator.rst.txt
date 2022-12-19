@@ -159,3 +159,12 @@ allure的报告标记
 	def test_007():
 		...
 
+
+自定义开始用例
+================
+
+.. note::
+	自定义开始用例用于调试，需要和运行参数 **--debugger=true** 结合使用，可以在 :ref:`自定义开始用例<custom_start>` 中查看示例
+
+.. py:function:: @pytest.mark.debug_from;
+

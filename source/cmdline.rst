@@ -67,3 +67,16 @@
 
 	# 仅在值等于True的时候，开启无头模式
 	pytest.main(['--headless=True'])
+
+
+自定义开始用例
+=================
+
+.. note:: 
+	此运行参数需要结合mark标记 **@pytest.mark.debug_from** 使用，可以前往 :ref:`自定义开始用例<custom_start>` 中查看示例，参数不区分大小写
+
+.. code-block:: python
+	:linenos:
+
+	pytest.main(['--debugger=true'])
+

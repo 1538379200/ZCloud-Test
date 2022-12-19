@@ -122,3 +122,36 @@
 	pytest.main(['--sw', '--stepwise-skip'])
 
 
+.. _custom_start: 
+
+
+自定义开始用例
+===================
+
+.. note::
+	| 自定义开始用例可以自由选择用例运行，和步进调试有点相似，但是属于更灵活的手动设置，在某些情况，可能直接修改stepwise文件会出现失效的情况
+	| 使用需要先在想要开始运行的用例上面，使用 **@pytest.mark.debug_from** 装饰，然后在运行参数中，写上 **--debugger=true** 
+	| 自定义开始用例在运行到失败的用例时会自动停止运行，便于调试进行
+
+.. code-block:: python
+	:linenos:
+
+	@pytest.mark.waf
+	@allure.severity('blocker')
+	@pytest.mark.debug_from
+	class Test01:
+	    def test_01(self):
+	        print(123)
+
+	    def test_02(self):
+	        print(456)
+	        raise AssertionError(456)
+
+	    def test_03(self):
+	        print(789)
+
+>>> pytest --debugger=true
+
+
+上述示例，我们之前的用例将全部跳过，当运行到test_02失败时，后续的test_03将不会再运行
+
