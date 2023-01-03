@@ -199,13 +199,13 @@
 <p class="admonition-title">备注</p>
 <div class="line-block">
 <div class="line">自定义开始用例可以自由选择用例运行，和步进调试有点相似，但是属于更灵活的手动设置，在某些情况，可能直接修改stepwise文件会出现失效的情况</div>
-<div class="line">使用需要先在想要开始运行的用例上面，使用 <strong>&#64;pytest.mark.debug_from</strong> 装饰，然后在运行参数中，写上 <strong>–debugger=true</strong></div>
-<div class="line">自定义开始用例在运行到失败的用例时会自动停止运行，便于调试进行</div>
+<div class="line">使用需要先在想要开始运行的用例上面，使用 <strong>&#64;pytest.mark.debug_start</strong> 装饰，然后在运行参数中，写上 <strong>–debugger=true</strong></div>
+<div class="line">自定义开始用例在运行到失败的用例时会自动停止运行，如果设置了debug_end标记，将会在碰到debug_end标记的用例运行完成后停止</div>
 </div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">waf</span>
 <span class="linenos"> 2</span><span class="nd">@allure</span><span class="o">.</span><span class="n">severity</span><span class="p">(</span><span class="s1">&#39;blocker&#39;</span><span class="p">)</span>
-<span class="linenos"> 3</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">debug_from</span>
+<span class="linenos"> 3</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">debug_start</span>
 <span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Test01</span><span class="p">:</span>
 <span class="linenos"> 5</span>    <span class="k">def</span> <span class="nf">test_01</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="linenos"> 6</span>        <span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -222,6 +222,21 @@
 </pre></div>
 </div>
 <p>上述示例，我们之前的用例将全部跳过，当运行到test_02失败时，后续的test_03将不会再运行</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">waf</span>
+<span class="linenos"> 2</span><span class="k">class</span> <span class="nc">Test01</span><span class="p">:</span>
+<span class="linenos"> 3</span>        <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">debug_start</span>
+<span class="linenos"> 4</span>        <span class="k">def</span> <span class="nf">test_01</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 5</span>                <span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>        <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">debug_end</span>
+<span class="linenos"> 8</span>        <span class="k">def</span> <span class="nf">test_02</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 9</span>                <span class="nb">print</span><span class="p">(</span><span class="mi">456</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>        <span class="k">def</span> <span class="nf">test_03</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">12</span>                <span class="nb">print</span><span class="p">(</span><span class="mi">789</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如上述示例，我们的程序将从test_01这个用例开始运行，没有错误的话，只会运行test_01和test_02两个用例，test_02运行完成将停止整个测试</p>
 </section>
 </section>
 

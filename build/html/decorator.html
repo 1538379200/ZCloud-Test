@@ -52,10 +52,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">确立用例之间依赖</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">用例参数化</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">跳过用例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">确认用例执行顺序</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">预期失败</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">预期失败</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#class">跳过整个class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">自定义开始用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">自定义开始/结束用例</a></li>
 </ul>
 </li>
 </ul>
@@ -167,19 +166,7 @@
 </div>
 </section>
 <section id="id6">
-<h2>确认用例执行顺序<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p>确认用例顺序会作用于全局，建议不使用这种方式，而是采取名称的方式来确定运行顺序</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="linenos">2</span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-<span class="linenos">3</span>        <span class="o">...</span>
-</pre></div>
-</div>
-</section>
-<section id="id7">
-<h2>预期失败<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
+<h2>预期失败<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>在某些场景下，我们的用例，在预想情况下就应该是失败的，这时候可以使用xfail的预期失败，当用例失败，标记为 <strong>xfail</strong> 表示是预期内的失败，如果通过了，则标记为 <strong>xPass</strong> 表示为预期外的通过，xfail并不算做失败用例</p>
@@ -243,15 +230,20 @@
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h2>自定义开始用例<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h2>
+<section id="id7">
+<h2>自定义开始/结束用例<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>自定义开始用例用于调试，需要和运行参数 <strong>–debugger=true</strong> 结合使用，可以在 <a class="reference internal" href="debug.html#custom-start"><span class="std std-ref">自定义开始用例</span></a> 中查看示例</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">&#64;pytest.mark.debug_from;</span></span></dt>
+<span class="sig-name descname"><span class="pre">&#64;pytest.mark.debug_start;</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">&#64;pytest.mark.debug_end;</span></span></dt>
 <dd></dd></dl>
 
 </section>

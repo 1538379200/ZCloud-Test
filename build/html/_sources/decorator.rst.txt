@@ -95,18 +95,6 @@ allure的报告标记
 		...
 
 
-确认用例执行顺序
-=================
-
-.. note::
-	确认用例顺序会作用于全局，建议不使用这种方式，而是采取名称的方式来确定运行顺序
-
-.. code-block:: python
-	:linenos:
-
-	@pytest.mark.run(order=1)
-	def test():
-		...
 
 
 预期失败
@@ -160,11 +148,13 @@ allure的报告标记
 		...
 
 
-自定义开始用例
-================
+自定义开始/结束用例
+======================
 
 .. note::
 	自定义开始用例用于调试，需要和运行参数 **--debugger=true** 结合使用，可以在 :ref:`自定义开始用例<custom_start>` 中查看示例
 
-.. py:function:: @pytest.mark.debug_from;
+.. py:function:: @pytest.mark.debug_start;
+
+.. py:function:: @pytest.mark.debug_end;
 

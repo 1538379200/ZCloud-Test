@@ -21,7 +21,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="prev" title="当前可用方法介绍" href="method.html" /> 
+    <link rel="next" title="命令行自定义参数介绍" href="cmdline.html" />
+    <link rel="prev" title="设置用例的优先级" href="severity.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,7 +42,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="method.html">当前可用方法介绍</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">如何启用分布式多进程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="severity.html">设置用例的优先级</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">如何启用分布式多进程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">用例标记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">用例过滤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">运行启动多进程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">多进程的数据管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">进行数据模块重载（已优化，不需要重载）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">命令行自定义参数介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">如何自定义运行、调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">进行postgresql的读取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorator.html">框架中众多装饰器的作用</a></li>
 </ul>
 
         </div>
@@ -70,25 +85,72 @@
              
   <section id="id1">
 <h1>如何启用分布式多进程<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
-<p>在运行的时候，我们可以指定需要启动多少个进程，一个进程调用一个CPU资源</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">-</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span> <span class="o">--</span><span class="n">dist</span><span class="o">=</span><span class="n">loadscope</span>
+<section id="id2">
+<h2>用例标记<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<p>在使用多进程的时候，我们需要使用 <strong>&#64;pytest.mark.user(‘admin’, ‘customer’)</strong> 这种形式的标记，来告诉程序，此用例需要分配给哪些账号使用，我们的多进程，是 <strong>按照账号数量进行分配</strong> 的</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;superagent&#39;</span><span class="p">,</span> <span class="s1">&#39;agent&#39;</span><span class="p">,</span> <span class="s1">&#39;customer&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="linenos">3</span><span class="k">def</span> <span class="nf">test_say_hello</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在py文件中写入即是</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">([</span><span class="s1">&#39;-n=2&#39;</span><span class="p">,</span> <span class="s1">&#39;--dist=loadscope&#39;</span><span class="p">])</span>
+</section>
+<section id="id3">
+<h2>用例过滤<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>在很多时候，我们可能会直接在类上进行标记，来给类下所有的用例打上user标记，如果我们需要特定指定某一个用例过滤的话，就需要用到此标记</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;customer&#39;</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="k">class</span> <span class="nc">TestA</span><span class="p">:</span>
+<span class="linenos"> 3</span>    <span class="k">def</span> <span class="nf">test_01</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 4</span>        <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="nf">test_02</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">ignore</span><span class="p">(</span><span class="s1">&#39;customer&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>    <span class="k">def</span> <span class="nf">test_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">11</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p>使用分布式多进程时，-n是指定几个进程，根据设备配置来，–dist可以使用参数load、loadfile、loadscope、no、each，几种，loadfile是一句py文件进行分组，loadscope是依据module和class进行分组，以class为准，each是线程运行所有的用例</p>
+<p>上述使用了ignore标记后，我们的admin进程，将运行所有用例，而customer，将不会运行test_x这个用例</p>
+</section>
+<section id="id4">
+<h2>运行启动多进程<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<p>上述的的操作，只是给我们的用例打上了标记，我们在运行的过程中，可以指定运行多少个账号和进程，以符合当前的运行期望</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="o">-</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span> <span class="o">--</span><span class="n">dist</span><span class="o">=</span><span class="n">each</span> <span class="o">--</span><span class="n">users</span><span class="o">=</span><span class="n">admin</span><span class="p">,</span><span class="n">customer</span><span class="p">,</span><span class="n">superagent</span><span class="p">,</span><span class="n">agent</span> <span class="o">--</span><span class="n">dynamic</span><span class="o">-</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>我们需要手动指定多少个进程，一个用户账号占据一个进程，–users指定了运行的账号，–dynamic-log对日志进行了处理，–dist=each则为每个进程分配同等的用例，我们可以使用程序的调试工具去进行，直接选择用户，程序将自动为其分配进程数量和日志模式</p>
+</div>
+</section>
+<section id="id5">
+<h2>多进程的数据管理<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<p>在我们的多进程中，使用多个账号进行，我们建议在数据模块中对测试的数据进行整理，而不是在用例逻辑中，当然，某些运行逻辑不相同的，你可能也是需要去进行一些逻辑修改的</p>
+<p>在数据模块中判断当前运行用户，并指定账号运行的数据，你需要在运行前对模块进行重载（已不再需要重载）</p>
+<p>在数据模块中，你可以使用confclass.worker来获取当前运行用户，用户有 <strong>admin(运维)、general(总代)、agent(二级代理)、customer(客户)</strong> 四种类型账号</p>
+<section id="id6">
+<h3>进行数据模块重载（已优化，不需要重载）<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h3>
+<p>对数据模块进行重载，你需要进入用例文件夹，比如：testcases/test_waf 文件夹，找到conftest.py文件，在里面导入你写好的数据模块，导入形式</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">data.waf.data_equipment</span> <span class="k">as</span> <span class="nn">waf_eq_data</span>
+</pre></div>
+</div>
+<p>然后，找到我们的reload_data函数，在其中，将这个waf_eq_data进行重载</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">reload_data</span><span class="p">():</span>
+<span class="linenos">3</span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">waf_eq_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="method.html" class="btn btn-neutral float-left" title="当前可用方法介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="severity.html" class="btn btn-neutral float-left" title="设置用例的优先级" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="cmdline.html" class="btn btn-neutral float-right" title="命令行自定义参数介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

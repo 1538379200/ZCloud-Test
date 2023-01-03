@@ -130,15 +130,15 @@
 
 .. note::
 	| 自定义开始用例可以自由选择用例运行，和步进调试有点相似，但是属于更灵活的手动设置，在某些情况，可能直接修改stepwise文件会出现失效的情况
-	| 使用需要先在想要开始运行的用例上面，使用 **@pytest.mark.debug_from** 装饰，然后在运行参数中，写上 **--debugger=true** 
-	| 自定义开始用例在运行到失败的用例时会自动停止运行，便于调试进行
+	| 使用需要先在想要开始运行的用例上面，使用 **@pytest.mark.debug_start** 装饰，然后在运行参数中，写上 **--debugger=true** 
+	| 自定义开始用例在运行到失败的用例时会自动停止运行，如果设置了debug_end标记，将会在碰到debug_end标记的用例运行完成后停止
 
 .. code-block:: python
 	:linenos:
 
 	@pytest.mark.waf
 	@allure.severity('blocker')
-	@pytest.mark.debug_from
+	@pytest.mark.debug_start
 	class Test01:
 	    def test_01(self):
 	        print(123)
@@ -154,4 +154,22 @@
 
 
 上述示例，我们之前的用例将全部跳过，当运行到test_02失败时，后续的test_03将不会再运行
+
+.. code-block:: python
+	:linenos:
+
+	@pytest.mark.waf
+	class Test01:
+		@pytest.mark.debug_start
+		def test_01(self):
+			print(123)
+
+		@pytest.mark.debug_end
+		def test_02(self):
+			print(456)
+
+		def test_03(self):
+			print(789)
+
+如上述示例，我们的程序将从test_01这个用例开始运行，没有错误的话，只会运行test_01和test_02两个用例，test_02运行完成将停止整个测试
 
